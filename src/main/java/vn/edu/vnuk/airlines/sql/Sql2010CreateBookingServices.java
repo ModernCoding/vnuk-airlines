@@ -3,14 +3,14 @@ package vn.edu.vnuk.airlines.sql;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class Sql2010CreateBookingsServices {
+public class Sql2010CreateBookingServices {
 	private final Connection connection;
 	private final String sqlQuery;
 	
-	public Sql2010CreateBookingsServices(Connection connection) {
+	public Sql2010CreateBookingServices(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "CREATE TABLE bookings_services ("
+		this.sqlQuery = "CREATE TABLE booking_services ("
 				+ "id BIGINT NOT NULL AUTO_INCREMENT, "
 				+ "booking_id BIGINT NOT NULL, "
 				+ "service_id BIGINT NOT NULL, "
@@ -26,7 +26,7 @@ public class Sql2010CreateBookingsServices {
 	public void run() throws SQLException {
 
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-		System.out.println(">  Sql2010CreateBookingsServices started");
+		System.out.println(">  Sql2010CreateBookingServices started");
 		
 		try {
 	        connection.prepareStatement(sqlQuery).execute();
@@ -40,7 +40,7 @@ public class Sql2010CreateBookingsServices {
 		}
 		
 		finally {
-			System.out.println("<  Sql2010CreateBookingsServices ended");
+			System.out.println("<  Sql2010CreateBookingServices ended");
 			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			System.out.println("");
 		}

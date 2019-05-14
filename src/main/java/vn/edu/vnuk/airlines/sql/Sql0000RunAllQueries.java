@@ -26,12 +26,12 @@ public class Sql0000RunAllQueries {
 		Connection connectionTable = new ConnectionFactory()
 				.getConnection();
 		
-		new Sql2010CreateTasks(connectionTable).run();
+		new Sql2010CreateAirports(connectionTable).run();
 		
 		
 		//	Insert data into tables
 		
-		new Sql5010InsertIntoTasks(connectionTable).run();
+		new Sql5010InsertIntoAirports(connectionTable).run();
 		
 		
 		connectionTable.close();
