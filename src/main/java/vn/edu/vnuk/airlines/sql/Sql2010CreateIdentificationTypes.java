@@ -10,7 +10,7 @@ public class Sql2010CreateIdentificationTypes {
 	public Sql2010CreateIdentificationTypes(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "CREATE TABLE indentification_types ("
+		this.sqlQuery = "CREATE TABLE identification_types ("
 				+ "id BIGINT NOT NULL AUTO_INCREMENT, "
 				+ "label VARCHAR(255) NOT NULL, "
 				+ "PRIMARY KEY (id)"

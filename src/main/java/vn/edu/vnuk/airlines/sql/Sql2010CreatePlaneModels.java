@@ -13,11 +13,10 @@ public class Sql2010CreatePlaneModels {
 		
 		this.sqlQuery = "CREATE TABLE plane_models ("
 				+ "id BIGINT NOT NULL AUTO_INCREMENT, "
-				+ "plane_manufacturer_id BIGINT NOT NULL,"
+				+ "plane_manufacturer_id BIGINT NOT NULL, "
 				+ "label VARCHAR(255) NOT NULL, "
-				+ "FOREIGN KEY (plane_manufacturer_id),"
 				+ "PRIMARY KEY (id),"
-				+ "REFERENCES plane_manufacturers (plane_manufacturer_id)"
+				+ "FOREIGN KEY (plane_manufacturer_id) REFERENCES plane_manufacturers(id)"
 				+ ") CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 			;
 	}

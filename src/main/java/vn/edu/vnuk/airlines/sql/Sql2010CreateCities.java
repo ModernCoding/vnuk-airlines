@@ -12,11 +12,10 @@ public class Sql2010CreateCities {
 		
 		this.sqlQuery = "CREATE TABLE cities ("
 				+ "id BIGINT NOT NULL AUTO_INCREMENT, "
-				+ "country_id BIGINT NOT NULL,"
+				+ "country_id BIGINT NOT NULL, "
 				+ "label VARCHAR(255) NOT NULL, "
-				+ "FOREIGN KEY (country_id),"
-				+ "PRIMARY KEY (id),"
-				+ "REFERENCES countries (country_id)"
+				+ "PRIMARY KEY (id), "
+				+ "FOREIGN KEY (country_id) REFERENCES countries(id)"
 				+ ") CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 			;
 	}

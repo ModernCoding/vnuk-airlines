@@ -10,7 +10,7 @@ public class Sql2010CreatePaymentMethods {
 	public Sql2010CreatePaymentMethods(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "CREATE TABLE payment_method ("
+		this.sqlQuery = "CREATE TABLE payment_methods ("
 				+ "id BIGINT NOT NULL AUTO_INCREMENT, "
 				+ "label VARCHAR(255) NOT NULL, "
 				+ "PRIMARY KEY (id)"

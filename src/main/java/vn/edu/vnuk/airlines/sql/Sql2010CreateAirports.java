@@ -14,10 +14,9 @@ public class Sql2010CreateAirports {
 				+ "id BIGINT NOT NULL AUTO_INCREMENT, "
 				+ "city_id BIGINT NOT NULL,"
 				+ "label VARCHAR(255) NOT NULL, "
-				+ "code VARCHAR(255) NOT NULL,"
-				+ "FOREIGN KEY (city_id)"
-				+ "PRIMARY KEY (id),"
-				+ "REFERENCES cities (city_id)"
+				+ "code VARCHAR(255) NOT NULL, "
+				+ "PRIMARY KEY (id), "
+				+ "FOREIGN KEY (city_id) REFERENCES cities(id)"
 				+ ") CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 			;
 	}

@@ -17,13 +17,10 @@ public class Sql2010CreateFlights {
 				+ "plane_model_id BIGINT NOT NULL, "
 				+ "departure_time DATE NOT NULL, "
 				+ "arrival_time DATE NOT NULL, "
-				+ "FOREIGN KEY (route_id), "
-				+ "FOREIGN KEY (day_id), "
-				+ "FOREIGN KEY (plane_model_id), "
 				+ "PRIMARY KEY (id),"
-				+ "REFERENCES routes (route_id), "
-				+ "REFERENCES days (day_id), "
-				+ "REFERENCES plane_models (plane_model_id) "
+				+ "FOREIGN KEY (route_id) REFERENCES routes (id), "
+				+ "FOREIGN KEY (day_id) REFERENCES days (id), "
+				+ "FOREIGN KEY (plane_model_id) REFERENCES plane_models (id) "
 				+ ") CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 			;
 	}

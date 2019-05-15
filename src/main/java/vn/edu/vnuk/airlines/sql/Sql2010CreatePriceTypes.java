@@ -13,7 +13,7 @@ public class Sql2010CreatePriceTypes {
 		this.sqlQuery = "CREATE TABLE price_types ("
 				+ "id BIGINT NOT NULL AUTO_INCREMENT, "
 				+ "label VARCHAR(255) NOT NULL, "
-				+ "description VARCHAR(255)"
+				+ "description VARCHAR(255),"
 				+ "PRIMARY KEY (id)"
 				+ ") CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 			;

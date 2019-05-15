@@ -12,17 +12,14 @@ public class Sql2010CreatePrices {
 		
 		this.sqlQuery = "CREATE TABLE prices ("
 				+ "id BIGINT NOT NULL AUTO_INCREMENT, "
-				+ "flight_id BIGINT NOT NULL,"
+				+ "flight_id BIGINT NOT NULL, "
 				+ "class_id BIGINT NOT NULL, "
 				+ "price_type_id BIGINT NOT NULL, "
 				+ "value VARCHAR(255) NOT NULL, "
-				+ "FOREIGN KEY (flight_id), "
-				+ "FOREIGN KEY (class_id), "
-				+ "FOREIGN KEY (price_type_id), "
-				+ "PRIMARY KEY (id),"
-				+ "REFERENCES flights (flight_id), "
-				+ "REFERENCES classes (class_id), "
-				+ "REFERENCES price_types (price_type_id)"
+				+ "PRIMARY KEY (id), "
+				+ "FOREIGN KEY (flight_id) REFERENCES flights (id), "
+				+ "FOREIGN KEY (class_id) REFERENCES classes (id), "
+				+ "FOREIGN KEY (price_type_id) REFERENCES price_types (id) "
 				+ ") CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 			;
 	}

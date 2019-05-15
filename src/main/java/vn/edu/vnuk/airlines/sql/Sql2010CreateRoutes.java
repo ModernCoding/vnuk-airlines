@@ -14,11 +14,9 @@ public class Sql2010CreateRoutes {
 				+ "id BIGINT NOT NULL AUTO_INCREMENT, "
 				+ "take_off_airport_id BIGINT NOT NULL, "
 				+ "landing_airport_id BIGINT NOT NULL, "
-				+ "FOREIGN KEY (take_off_airport_id),"
-				+ "FOREIGN KEY (landing_airport_id),"
-				+ "PRIMARY KEY (id),"
-				+ "REFERENCES airports (take_off_airport_id),"
-				+ "REFERENCES airports (landing_airport_id)"
+				+ "PRIMARY KEY (id), "
+				+ "FOREIGN KEY (take_off_airport_id) REFERENCES airports(id), "
+				+ "FOREIGN KEY (landing_airport_id) REFERENCES airports(id) "
 				+ ") CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 			;
 	}

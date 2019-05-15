@@ -14,11 +14,9 @@ public class Sql2010CreateBookingServices {
 				+ "id BIGINT NOT NULL AUTO_INCREMENT, "
 				+ "booking_id BIGINT NOT NULL, "
 				+ "service_id BIGINT NOT NULL, "
-				+ "FOREIGN KEY (booking_id), "
-				+ "FOREIGN KEY (service_id), "
 				+ "PRIMARY KEY (id),"
-				+ "REFERENCES bookings (booking_id), "
-				+ "REFERENCES services (service_id) "
+				+ "FOREIGN KEY (booking_id) REFERENCES bookings (id), "
+				+ "FOREIGN KEY (service_id) REFERENCES services (id) "
 				+ ") CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 			;
 	}
