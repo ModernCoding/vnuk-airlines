@@ -11,8 +11,13 @@ public class Sql5010InsertIntoClasses {
 	public Sql5010InsertIntoClasses(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "INSERT INTO classes (description) "
-                +	"values (?)";
+		this.sqlQuery = "INSERT INTO classes (label) "
+				+ 	"values"
+				+ 	"('Economy'),"
+				+ 	"('Business'),"
+				+ 	"('First class'),"
+				+	";"
+				;
 	}
 	
 	public void run() throws SQLException {

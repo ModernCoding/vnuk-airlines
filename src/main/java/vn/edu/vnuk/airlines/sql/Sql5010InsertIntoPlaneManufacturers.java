@@ -11,8 +11,15 @@ public class Sql5010InsertIntoPlaneManufacturers {
 	public Sql5010InsertIntoPlaneManufacturers(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "INSERT INTO plane_manufacturers (description) "
-                +	"values (?)";
+		this.sqlQuery = "INSERT INTO plane_manufacturers (label)"
+                +	"values"
+				+	"('Boeing'),"
+                +	"('Airbus'),"
+                +	"('Comac'),"
+                +	"('Embraer'),"
+                +	"('Bombardier')"
+                + ";"
+				;
 	}
 	
 	public void run() throws SQLException {

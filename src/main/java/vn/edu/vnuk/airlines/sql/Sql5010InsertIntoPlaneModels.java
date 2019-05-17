@@ -11,8 +11,25 @@ public class Sql5010InsertIntoPlaneModels {
 	public Sql5010InsertIntoPlaneModels(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "INSERT INTO plane_models (description) "
-                +	"values (?)";
+		this.sqlQuery = "INSERT INTO plane_models (plane_manufacturer_id, label)"
+				+	"values"
+				+	"('1,707'),"
+                +	"('1, 727'),"
+                +	"('1, 737'),"
+                +	"('1, 757'),"
+                +	"('1, 787'),"
+                +	"('2, A220'),"
+                +	"('2, A300'),"
+                +	"('2, A330'),"
+                +	"('3, ARJ21'),"
+                +	"('3, C919'),"
+                +	"('4, ERJ145'),"
+                +	"('4, 195E'),"
+                +	"('4, 195E2'),"
+                +	"('5, CRJ100'),"
+                +	"('5, CRJ200')"
+                + ";"
+				;
 	}
 	
 	public void run() throws SQLException {

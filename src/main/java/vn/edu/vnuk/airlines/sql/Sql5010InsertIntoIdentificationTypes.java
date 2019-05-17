@@ -10,8 +10,12 @@ public class Sql5010InsertIntoIdentificationTypes {
 	public Sql5010InsertIntoIdentificationTypes(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "INSERT INTO identification_types (description) "
-                +	"values (?)";
+		this.sqlQuery = "INSERT INTO identification_types (label) "
+				+ 	"values"
+				+ 	"('Passport'),"
+				+ 	"('National ID'),"
+				+	";"
+				;
 	}
 	
 	public void run() throws SQLException {

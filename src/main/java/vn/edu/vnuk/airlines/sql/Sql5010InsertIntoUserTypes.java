@@ -11,8 +11,12 @@ public class Sql5010InsertIntoUserTypes {
 	public Sql5010InsertIntoUserTypes(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "INSERT INTO user_types (description) "
-                +	"values (?)";
+		this.sqlQuery = "INSERT INTO user_types (label) "
+				+ 	"values"
+				+ 	"('admin'),"
+				+ 	"('customer'),"
+				+	";"
+				;
 	}
 	
 	public void run() throws SQLException {

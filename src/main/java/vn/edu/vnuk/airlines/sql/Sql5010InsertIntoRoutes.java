@@ -11,8 +11,17 @@ public class Sql5010InsertIntoRoutes {
 	public Sql5010InsertIntoRoutes(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "INSERT INTO routes (description) "
-                +	"values (?)";
+		this.sqlQuery = "INSERT INTO routes (take_off_airport_id,landing_airport_id) "
+				+ 	"values"
+				+ 	"('1,2),"
+				+ 	"('1,3),"
+				+ 	"('2,1),"
+				+ 	"('2,3),"
+				+ 	"('3,1),"
+				+ 	"('3,2)"
+				+	";"
+				;
+		
 	}
 	
 	public void run() throws SQLException {

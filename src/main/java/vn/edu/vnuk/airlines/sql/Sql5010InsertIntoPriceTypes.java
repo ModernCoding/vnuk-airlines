@@ -11,8 +11,13 @@ public class Sql5010InsertIntoPriceTypes {
 	public Sql5010InsertIntoPriceTypes(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "INSERT INTO price_types (description) "
-                +	"values (?)";
+		this.sqlQuery = "INSERT INTO price_types (label) "
+				+ 	"values"
+				+ 	"('Vietnamese Dong (VND)'),"
+				+ 	"('Dollar (USD)'),"
+				+ 	"('Yuan (RMB)')"
+				+	";"
+				;
 	}
 	
 	public void run() throws SQLException {
