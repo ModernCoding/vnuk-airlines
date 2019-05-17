@@ -11,8 +11,12 @@ public class Sql5010InsertIntoPaymentMethods {
 	public Sql5010InsertIntoPaymentMethods(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "INSERT INTO payment_methods (description) "
-                +	"values (?)";
+		this.sqlQuery = "INSERT INTO payment_methods (label) "
+				+ 	"values"
+				+ 	"('Mastercard'),"
+				+ 	"('VISA'),"
+				+	";"
+				;
 	}
 	
 	public void run() throws SQLException {

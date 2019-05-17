@@ -11,8 +11,18 @@ public class Sql5010InsertIntoCountries {
 	public Sql5010InsertIntoCountries(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "INSERT INTO countries (description) "
-                +	"values (?)";
+		this.sqlQuery = "INSERT INTO countries (label) "
+				+	"values"
+				+	"('Vietnam'),"
+				+	"('Hungary'),"
+				+	"('USA'),"
+				+	"('France'),"
+				+	"('Germany'),"
+				+	"('Portugal'),"
+				+	"('Spain'),"
+				+	"('Morocco')"
+				+ 	";"
+				;
 	}
 	
 	public void run() throws SQLException {

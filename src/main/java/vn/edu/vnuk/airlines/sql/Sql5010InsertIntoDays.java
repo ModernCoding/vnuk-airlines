@@ -11,8 +11,24 @@ public class Sql5010InsertIntoDays {
 	public Sql5010InsertIntoDays(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "INSERT INTO days (description) "
-                +	"values (?)";
+		this.sqlQuery = "INSERT INTO days (label) "
+				+ 	"values"
+				+ 	"('2019.06.27.'),"
+				+ 	"('2019.06.28.'),"
+				+ 	"('2019.06.29.'),"
+				+ 	"('2019.07.30.'),"
+				+ 	"('2019.07.15.'),"
+				+ 	"('2019.07.21.'),"
+				+ 	"('2019.08.11.'),"
+				+ 	"('2019.08.05.'),"
+				+ 	"('2019.08.06.'),"
+				+ 	"('2019.09.08.'),"
+				+ 	"('2019.09.22.'),"
+				+ 	"('2019.10.01.'),"
+				+ 	"('2019.11.18.'),"
+				+ 	"('2019.12.14.')"
+				+	";"
+				;
 	}
 	
 	public void run() throws SQLException {

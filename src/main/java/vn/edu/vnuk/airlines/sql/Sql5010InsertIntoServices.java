@@ -11,8 +11,14 @@ public class Sql5010InsertIntoServices {
 	public Sql5010InsertIntoServices(Connection connection) {
 		this.connection = connection;
 		
-		this.sqlQuery = "INSERT INTO services (description) "
-                +	"values (?)";
+		this.sqlQuery = "INSERT INTO services (label) "
+				+ 	"values"
+				+ 	"('Transfer to aiport'),"
+				+ 	"('Transfer from airport')"
+				+ 	"('Special food requirements')"
+				+ 	"('Choose seat')"
+				+ 	"('Priority check in')"
+				+	";";
 	}
 	
 	public void run() throws SQLException {
