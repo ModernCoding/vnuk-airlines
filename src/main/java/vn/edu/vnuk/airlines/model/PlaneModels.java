@@ -12,6 +12,8 @@ public class PlaneModels {
 	
 	@NotNull
 	private String label;
+	
+	private PlaneManufacturers planeManufacturers;
 
 	public long getId() {
 		return id;
@@ -35,6 +37,14 @@ public class PlaneModels {
 
 	public void setLabel(String label) {
 		this.label = label;
+	}
+
+	public PlaneManufacturers getPlaneManufacturers() {
+		return planeManufacturers;
+	}
+
+	public void setPlaneManufacturers(PlaneManufacturers planeManufacturers) {
+		this.planeManufacturers = planeManufacturers;
 	}
 
 }
