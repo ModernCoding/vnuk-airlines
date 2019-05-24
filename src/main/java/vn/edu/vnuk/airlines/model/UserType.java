@@ -2,8 +2,8 @@ package vn.edu.vnuk.airlines.model;
 
 import javax.validation.constraints.NotNull;
 
-public class PlaneManufacturers {
-	
+public class UserType {
+
 	@NotNull
 	private Long id;
 	

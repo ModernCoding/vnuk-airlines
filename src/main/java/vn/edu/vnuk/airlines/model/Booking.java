@@ -2,25 +2,25 @@ package vn.edu.vnuk.airlines.model;
 
 import javax.validation.constraints.NotNull;
 
-public class Bookings {
+public class Booking {
 	
 	@NotNull
 	private Long id;
 	
 	@NotNull
-	private int userId;
+	private Long userId;
 	
 	@NotNull
-	private int flightId;
+	private Long flightId;
 	
 	@NotNull
 	private String seatNumber;
 	
 	@NotNull
-	private int priceId;
+	private Long priceId;
 	
 	@NotNull
-	private int paymentMethodId;
+	private Long paymentMethodId;
 
 	public Long getId() {
 		return id;
@@ -30,19 +30,19 @@ public class Bookings {
 		this.id = id;
 	}
 
-	public int getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
-	public int getFlightId() {
+	public Long getFlightId() {
 		return flightId;
 	}
 
-	public void setFlightId(int flightId) {
+	public void setFlightId(Long flightId) {
 		this.flightId = flightId;
 	}
 
@@ -54,28 +54,21 @@ public class Bookings {
 		this.seatNumber = seatNumber;
 	}
 
-	public int getPriceId() {
+	public Long getPriceId() {
 		return priceId;
 	}
 
-	public void setPriceId(int priceId) {
+	public void setPriceId(Long priceId) {
 		this.priceId = priceId;
 	}
 
-	public int getPaymentMethodId() {
+	public Long getPaymentMethodId() {
 		return paymentMethodId;
 	}
 
-	public void setPaymentMethodId(int paymentMethodId) {
+	public void setPaymentMethodId(Long paymentMethodId) {
 		this.paymentMethodId = paymentMethodId;
 	}
-	
 
 	
-	
-	
-	
-	
-	
-
 }

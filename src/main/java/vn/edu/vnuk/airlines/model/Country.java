@@ -2,14 +2,10 @@ package vn.edu.vnuk.airlines.model;
 
 import javax.validation.constraints.NotNull;
 
-public class UserTypes {
-
+public class Country {
+	
 	@NotNull
 	private Long id;
-	
-	@NotNull
-	private String label;
-	
 	
 	public Long getId() {
 		return id;
@@ -26,5 +22,8 @@ public class UserTypes {
 	public void setLabel(String label) {
 		this.label = label;
 	}
+
+	@NotNull
+	private String label;
 
 }

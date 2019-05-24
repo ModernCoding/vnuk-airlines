@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import vn.edu.vnuk.airlines.model.Countries;
+import vn.edu.vnuk.airlines.model.Country;
 
 public class CountriesDao {
 
@@ -21,7 +21,7 @@ public class CountriesDao {
 
 
     //  CREATE
-    public void create(Countries countries) throws SQLException{
+    public void create(Country countries) throws SQLException{
 
         String sqlQuery = "insert into countries (label) values (?)";
 
@@ -48,13 +48,13 @@ public class CountriesDao {
     
     
     //  READ (List of Body Parts)
-    public List<Countries> read() throws SQLException {
+    public List<Country> read() throws SQLException {
 
         try {
             
         	return this.jdbcTemplate.query(
         			"SELECT * FROM countries",
-        			new BeanPropertyRowMapper<Countries>(Countries.class)
+        			new BeanPropertyRowMapper<Country>(Country.class)
     			);
 
         	
@@ -72,19 +72,19 @@ public class CountriesDao {
 
 
     //  READ (Single BodyPart)
-    public Countries read(Long id) throws SQLException{
+    public Country read(Long id) throws SQLException{
     	
     	return this.jdbcTemplate.queryForObject(
     			"SELECT * FROM countries where id = ?",
         		new Object[] {id},
-        		new BeanPropertyRowMapper<Countries>(Countries.class)
+        		new BeanPropertyRowMapper<Country>(Country.class)
         	);
         
     }  
 
     
     //  UPDATE
-    public void update(Countries bodyPart) throws SQLException {
+    public void update(Country bodyPart) throws SQLException {
     	
         String sqlQuery = "update countries set label=? where id=?";
         

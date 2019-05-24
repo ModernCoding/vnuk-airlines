@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import vn.edu.vnuk.airlines.model.Countries;
-import vn.edu.vnuk.airlines.model.UserTypes;
+import vn.edu.vnuk.airlines.model.Country;
+import vn.edu.vnuk.airlines.model.UserType;
 
 public class UserTypesDao {
 
@@ -22,7 +22,7 @@ private final JdbcTemplate jdbcTemplate;
 
 
     //  CREATE
-    public void create(UserTypes userTypes) throws SQLException{
+    public void create(UserType userTypes) throws SQLException{
 
         String sqlQuery = "insert into user_types (label) values (?)";
 
@@ -49,13 +49,13 @@ private final JdbcTemplate jdbcTemplate;
     
     
     //  READ (List of Body Parts)
-    public List<UserTypes> read() throws SQLException {
+    public List<UserType> read() throws SQLException {
 
         try {
             
         	return this.jdbcTemplate.query(
         			"SELECT * FROM user_types",
-        			new BeanPropertyRowMapper<UserTypes>(UserTypes.class)
+        			new BeanPropertyRowMapper<UserType>(UserType.class)
     			);
 
         	
@@ -73,19 +73,19 @@ private final JdbcTemplate jdbcTemplate;
 
 
     //  READ (Single BodyPart)
-    public UserTypes read(Long id) throws SQLException{
+    public UserType read(Long id) throws SQLException{
     	
     	return this.jdbcTemplate.queryForObject(
     			"SELECT * FROM user_types where id = ?",
         		new Object[] {id},
-        		new BeanPropertyRowMapper<UserTypes>(UserTypes.class)
+        		new BeanPropertyRowMapper<UserType>(UserType.class)
         	);
         
     }  
 
     
     //  UPDATE
-    public void update(Countries bodyPart) throws SQLException {
+    public void update(Country bodyPart) throws SQLException {
     	
         String sqlQuery = "update user_types set label=? where id=?";
         

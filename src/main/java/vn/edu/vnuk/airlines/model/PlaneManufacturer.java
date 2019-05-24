@@ -2,7 +2,7 @@ package vn.edu.vnuk.airlines.model;
 
 import javax.validation.constraints.NotNull;
 
-public class Classes {
+public class PlaneManufacturer {
 	
 	@NotNull
 	private Long id;
@@ -26,6 +26,5 @@ public class Classes {
 	public void setLabel(String label) {
 		this.label = label;
 	}
-
 
 }

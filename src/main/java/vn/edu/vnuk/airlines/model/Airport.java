@@ -11,12 +11,12 @@ import javax.validation.constraints.NotNull;
  *
  * @author michel
  */
-public class Airports {
+public class Airport {
 	
     private Long id;
     
     @NotNull
-    private int  cityId;
+    private Long  cityId;
     
     @NotNull
     private String label;
@@ -32,11 +32,11 @@ public class Airports {
 		this.id = id;
 	}
 
-	public int getCityId() {
+	public Long getCityId() {
 		return cityId;
 	}
 
-	public void setCityId(int cityId) {
+	public void setCityId(Long cityId) {
 		this.cityId = cityId;
 	}
 

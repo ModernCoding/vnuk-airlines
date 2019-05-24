@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import vn.edu.vnuk.airlines.model.Days;
+import vn.edu.vnuk.airlines.model.Day;
 
 public class DaysDao {
 
@@ -21,7 +21,7 @@ private final JdbcTemplate jdbcTemplate;
 
 
     //  CREATE
-    public void create(Days days) throws SQLException{
+    public void create(Day days) throws SQLException{
 
         String sqlQuery = "insert into days (label) values (?)";
 
@@ -48,13 +48,13 @@ private final JdbcTemplate jdbcTemplate;
     
     
     //  READ (List of Body Parts)
-    public List<Days> read() throws SQLException {
+    public List<Day> read() throws SQLException {
 
         try {
             
         	return this.jdbcTemplate.query(
         			"SELECT * FROM days",
-        			new BeanPropertyRowMapper<Days>(Days.class)
+        			new BeanPropertyRowMapper<Day>(Day.class)
     			);
 
         	
@@ -72,19 +72,19 @@ private final JdbcTemplate jdbcTemplate;
 
 
     //  READ (Single BodyPart)
-    public Days read(Long id) throws SQLException{
+    public Day read(Long id) throws SQLException{
     	
     	return this.jdbcTemplate.queryForObject(
     			"SELECT * FROM days where id = ?",
         		new Object[] {id},
-        		new BeanPropertyRowMapper<Days>(Days.class)
+        		new BeanPropertyRowMapper<Day>(Day.class)
         	);
         
     }  
 
     
     //  UPDATE
-    public void update(Days bodyPart) throws SQLException {
+    public void update(Day bodyPart) throws SQLException {
     	
         String sqlQuery = "update days set label=? where id=?";
         

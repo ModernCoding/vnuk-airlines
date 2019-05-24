@@ -2,10 +2,14 @@ package vn.edu.vnuk.airlines.model;
 
 import javax.validation.constraints.NotNull;
 
-public class Days {
+public class Service {
 	
 	@NotNull
 	private Long id;
+	
+	@NotNull
+	private String label;
+	
 	
 	public Long getId() {
 		return id;
@@ -23,7 +27,5 @@ public class Days {
 		this.label = label;
 	}
 
-	@NotNull
-	private String label;
 
 }
