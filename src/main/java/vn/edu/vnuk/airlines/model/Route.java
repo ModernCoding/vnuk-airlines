@@ -2,16 +2,16 @@ package vn.edu.vnuk.airlines.model;
 
 import javax.validation.constraints.NotNull;
 
-public class Routes {
+public class Route {
 	
 	@NotNull
 	private Long id;
 	
 	@NotNull
-	private int takeOffAirportId;
+	private Long takeOffAirportId;
 	
 	@NotNull
-	private int landingAirportId;
+	private Long landingAirportId;
 
 	public Long getId() {
 		return id;
@@ -21,20 +21,20 @@ public class Routes {
 		this.id = id;
 	}
 
-	public int getTakeOffAirportId() {
+	public Long getTakeOffAirportId() {
 		return takeOffAirportId;
 	}
 
-	public void setTakeOffAirportId(int takeOffAirportId) {
+	public void setTakeOffAirportId(Long takeOffAirportId) {
 		this.takeOffAirportId = takeOffAirportId;
 	}
 
-	public int getLandingAirportId() {
+	public Long getLandingAirportId() {
 		return landingAirportId;
 	}
 
-	public void setLandingAirportId(int landingAirportId) {
+	public void setLandingAirportId(Long landingAirportId) {
 		this.landingAirportId = landingAirportId;
 	}
-	
+
 }

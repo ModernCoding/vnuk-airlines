@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import vn.edu.vnuk.airlines.model.PaymentMethods;
+import vn.edu.vnuk.airlines.model.PaymentMethod;
 
 public class PaymentMethodsDao {
 
@@ -21,7 +21,7 @@ public class PaymentMethodsDao {
 
 
     //  CREATE
-    public void create(PaymentMethods paymentMethods) throws SQLException{
+    public void create(PaymentMethod paymentMethods) throws SQLException{
 
         String sqlQuery = "insert into payment_methods (label) values (?)";
 
@@ -48,13 +48,13 @@ public class PaymentMethodsDao {
     
     
     //  READ (List of Body Parts)
-    public List<PaymentMethods> read() throws SQLException {
+    public List<PaymentMethod> read() throws SQLException {
 
         try {
             
         	return this.jdbcTemplate.query(
         			"SELECT * FROM payment_methods",
-        			new BeanPropertyRowMapper<PaymentMethods>(PaymentMethods.class)
+        			new BeanPropertyRowMapper<PaymentMethod>(PaymentMethod.class)
     			);
 
         	
@@ -72,19 +72,19 @@ public class PaymentMethodsDao {
 
 
     //  READ (Single BodyPart)
-    public PaymentMethods read(Long id) throws SQLException{
+    public PaymentMethod read(Long id) throws SQLException{
     	
     	return this.jdbcTemplate.queryForObject(
     			"SELECT * FROM payment_methods where id = ?",
         		new Object[] {id},
-        		new BeanPropertyRowMapper<PaymentMethods>(PaymentMethods.class)
+        		new BeanPropertyRowMapper<PaymentMethod>(PaymentMethod.class)
         	);
         
     }  
 
     
     //  UPDATE
-    public void update(PaymentMethods bodyPart) throws SQLException {
+    public void update(PaymentMethod bodyPart) throws SQLException {
     	
         String sqlQuery = "update payment_methods set label=? where id=?";
         

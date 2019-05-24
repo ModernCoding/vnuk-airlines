@@ -4,20 +4,26 @@ import java.sql.Date;
 
 import javax.validation.constraints.NotNull;
 
-public class Flights {
+public class Flight {
 	
 	@NotNull
 	private Long id;
 	
 	@NotNull
-	private int route_Id;
+	private Long route_Id;
 	
 	@NotNull
-	private int dayId;
+	private Long dayId;
 	
 	@NotNull
-	private int planeModelId;
+	private Long planeModelId;
 	
+	@NotNull
+	private Date departureTime;
+	
+	@NotNull
+	private Date arrivalTime;
+
 	public Long getId() {
 		return id;
 	}
@@ -26,27 +32,27 @@ public class Flights {
 		this.id = id;
 	}
 
-	public int getRoute_Id() {
+	public Long getRoute_Id() {
 		return route_Id;
 	}
 
-	public void setRoute_Id(int route_Id) {
+	public void setRoute_Id(Long route_Id) {
 		this.route_Id = route_Id;
 	}
 
-	public int getDayId() {
+	public Long getDayId() {
 		return dayId;
 	}
 
-	public void setDayId(int dayId) {
+	public void setDayId(Long dayId) {
 		this.dayId = dayId;
 	}
 
-	public int getPlaneModelId() {
+	public Long getPlaneModelId() {
 		return planeModelId;
 	}
 
-	public void setPlaneModelId(int planeModelId) {
+	public void setPlaneModelId(Long planeModelId) {
 		this.planeModelId = planeModelId;
 	}
 
@@ -65,11 +71,5 @@ public class Flights {
 	public void setArrivalTime(Date arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
-
-	@NotNull
-	private Date departureTime;
-	
-	@NotNull
-	private Date arrivalTime;
 
 }

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import vn.edu.vnuk.airlines.model.PlaneManufacturers;
+import vn.edu.vnuk.airlines.model.PlaneManufacturer;
 
 public class PlaneManufacturersDao {
 
@@ -21,7 +21,7 @@ public class PlaneManufacturersDao {
 
 
 	    //  CREATE
-	    public void create(PlaneManufacturers planManufacturers) throws SQLException{
+	    public void create(PlaneManufacturer planManufacturers) throws SQLException{
 
 	        String sqlQuery = "insert into plane_manufacturers (label) values (?)";
 
@@ -48,13 +48,13 @@ public class PlaneManufacturersDao {
 	    
 	    
 	    //  READ (List of Body Parts)
-	    public List<PlaneManufacturers> read() throws SQLException {
+	    public List<PlaneManufacturer> read() throws SQLException {
 
 	        try {
 	            
 	        	return this.jdbcTemplate.query(
 	        			"SELECT * FROM plane_manufacturers",
-	        			new BeanPropertyRowMapper<PlaneManufacturers>(PlaneManufacturers.class)
+	        			new BeanPropertyRowMapper<PlaneManufacturer>(PlaneManufacturer.class)
 	    			);
 
 	        	
@@ -72,19 +72,19 @@ public class PlaneManufacturersDao {
 
 
 	    //  READ (Single BodyPart)
-	    public PlaneManufacturers read(Long id) throws SQLException{
+	    public PlaneManufacturer read(Long id) throws SQLException{
 	    	
 	    	return this.jdbcTemplate.queryForObject(
 	    			"SELECT * FROM plane_manufacturers where id = ?",
 	        		new Object[] {id},
-	        		new BeanPropertyRowMapper<PlaneManufacturers>(PlaneManufacturers.class)
+	        		new BeanPropertyRowMapper<PlaneManufacturer>(PlaneManufacturer.class)
 	        	);
 	        
 	    }  
 
 	    
 	    //  UPDATE
-	    public void update(PlaneManufacturers bodyPart) throws SQLException {
+	    public void update(PlaneManufacturer bodyPart) throws SQLException {
 	    	
 	        String sqlQuery = "update plane_manufacturers set label=? where id=?";
 	        

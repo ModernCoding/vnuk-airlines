@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import vn.edu.vnuk.airlines.model.PriceTypes;
+import vn.edu.vnuk.airlines.model.PriceType;
 
 public class PriceTypesDao {
 
@@ -21,7 +21,7 @@ public class PriceTypesDao {
 
 
     //  CREATE
-    public void create(PriceTypes priceTypes) throws SQLException{
+    public void create(PriceType priceTypes) throws SQLException{
 
         String sqlQuery = "insert into price_types (label, description) values (?, ?)";
 
@@ -48,13 +48,13 @@ public class PriceTypesDao {
     
     
     //  READ (List of Body Parts)
-    public List<Countries> read() throws SQLException {
+    public List<PriceType> read() throws SQLException {
 
         try {
             
         	return this.jdbcTemplate.query(
-        			"SELECT * FROM countries",
-        			new BeanPropertyRowMapper<Countries>(Countries.class)
+        			"SELECT * FROM price_types",
+        			new BeanPropertyRowMapper<PriceType>(PriceType.class)
     			);
 
         	
@@ -72,19 +72,19 @@ public class PriceTypesDao {
 
 
     //  READ (Single BodyPart)
-    public Countries read(Long id) throws SQLException{
+    public PriceType read(Long id) throws SQLException{
     	
     	return this.jdbcTemplate.queryForObject(
-    			"SELECT * FROM countries where id = ?",
+    			"SELECT * FROM price_types where id = ?",
         		new Object[] {id},
-        		new BeanPropertyRowMapper<Countries>(Countries.class)
+        		new BeanPropertyRowMapper<PriceType>(PriceType.class)
         	);
         
     }  
 
     
     //  UPDATE
-    public void update(Countries bodyPart) throws SQLException {
+    public void update(PriceType bodyPart) throws SQLException {
     	
         String sqlQuery = "update countries set label=? where id=?";
         
@@ -99,7 +99,7 @@ public class PriceTypesDao {
 				);
             
             
-            System.out.println("Countries successfully modified.");
+            System.out.println("PriceTypes successfully modified.");
         } 
 
         catch (Exception e) {
@@ -113,7 +113,7 @@ public class PriceTypesDao {
     //  DELETE
     public void delete(Long id) throws SQLException {
     	
-        String sqlQuery = "delete from countries where id=?";
+        String sqlQuery = "delete from price_types where id=?";
 
         try {
 

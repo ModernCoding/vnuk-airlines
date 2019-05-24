@@ -6,35 +6,36 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import vn.edu.vnuk.airlines.model.PlaneModels;
+import vn.edu.vnuk.airlines.model.PlaneModel;
+import vn.edu.vnuk.airlines.rowmapper.PlaneModelRowMapper;
 
 
-public class PlaneModelsDao {
+public class PlaneModelDao {
 
 private final JdbcTemplate jdbcTemplate;
     
     @Autowired
-    public PlaneModelsDao(JdbcTemplate jdbcTemplate) {
+    public PlaneModelDao(JdbcTemplate jdbcTemplate) {
 	  this.jdbcTemplate = jdbcTemplate;
     }
 
 
     //  CREATE
-    public void create(PlaneModels planemodels) throws SQLException{
+    public void create(PlaneModel planeModel) throws SQLException{
 
-        String sqlQuery = "insert into planemodels (plane_manufacturer_id, label) "
+        String sqlQuery = "insert into plane_models (plane_manufacturer_id, label) "
                         +	"values (?, ?)";
 
         try {
             System.out.println(
             		String.format(
-            				"%s new subcategory in DB!",
+            				"%s new planeModel in DB!",
             				
             				this.jdbcTemplate.update(
             						sqlQuery,
             						new Object[] {
-            								planemodels.getPlaneManufacturerId(),
-            								planemodels.getLabel()
+            								planeModel.getPlaneManufacturerId(),
+            								planeModel.getLabel()
             							}
         						)
         				)
@@ -51,13 +52,13 @@ private final JdbcTemplate jdbcTemplate;
     
     
     //  READ (List of Customers)
-    public List<PlaneModels> read(int plane_manufacturer_id) throws SQLException {
+    public List<PlaneModel> read(String planeManufacturerId) throws SQLException {
     	
     	String sqlQuery = "select t01.id"
 		    			+ "     , t01.label"
 		    			+ "     , t02.id as plane_manufacturer_id"
-						+ "     , t02.label as plane_manufacturer_label"
-						+ "  from planemodels t01, plane_manufacturers t02"
+		    			+ "     , t02.label as plane_manufacturer_label"
+						+ "  from plane_models t01, plane_manufacturers t02"
 						+ " where t02.id = t01.plane_manufacturer_id"
 				;
     	
@@ -73,7 +74,7 @@ private final JdbcTemplate jdbcTemplate;
     	
         try {
         	
-        	return new CustomerRowMapper().mapRows(this.jdbcTemplate.queryForList(sqlQuery));
+        	return new PlaneModelRowMapper().mapRows(this.jdbcTemplate.queryForList(sqlQuery));
         	
         } catch (Exception e) {
         	
@@ -88,18 +89,15 @@ private final JdbcTemplate jdbcTemplate;
 
 
     //  READ (Single Customer)
-    public Subcategory read(Long id) throws SQLException{
+    public PlaneModel read(Long id) throws SQLException{
 
     	String sqlQuery = "select t01.id"
+    			+ "     , t02.id as plane_manufacturer_id"
     			+ "     , t01.label"
-    			+ "     , t02.id as title_id"
-				+ "     , t02.label as title_label"
-				+ "     , t01.address"
-				+ "     , t01.phone"
-				+ "     , t01.email"
-				+ "  from customers t01, titles t02"
+				+ "     , t02.label "
+				+ "  from plane_models t01, plane_manufacturers t02"
 				+ " where t01.id = ?"
-				+ "   and t02.id = t01.title_id"
+				+ "   and t02.id = t01.plane_manufacturer_id"
 				+ " order by t02.id asc, t01.id asc"
 				+ ";"
 		;
@@ -107,16 +105,16 @@ private final JdbcTemplate jdbcTemplate;
     	return this.jdbcTemplate.queryForObject(
     			sqlQuery,
         		new Object[] {id},
-        		new SubcategoryRowMapper()
+        		new PlaneModelRowMapper()
         	);
         
     }  
 
     
     //  UPDATE
-    public void update(Customer customer) throws SQLException {
+    public void update(PlaneModel planeModel) throws SQLException {
         
-    	String sqlQuery = "update customers set title_id=?, label=?, address=?, phone=?, email=? where id=?";
+    	String sqlQuery = "update plane_models set plane_manufacturer_id=? label=? where id=?";
         
 
         try {
@@ -124,16 +122,14 @@ private final JdbcTemplate jdbcTemplate;
 					sqlQuery,
 					
 					new Object[] {
-							customer.getTitleId(),
-							customer.getLabel(),
-							customer.getAddress(),
-							customer.getPhone(),
-							customer.getEmail()
+							planeModel.getPlaneManufacturerId(),
+							planeModel.getLabel(),
+							planeModel.getId()
 						}
 				);
             
             
-            System.out.println("Customer successfully modified.");
+            System.out.println("PlaneModel successfully modified.");
         } 
 
         catch (Exception e) {
@@ -147,7 +143,7 @@ private final JdbcTemplate jdbcTemplate;
     //  DELETE
     public void delete(Long id) throws SQLException {
         
-    	String sqlQuery = "delete from customers where id=?";
+    	String sqlQuery = "delete from plane_model where id=?";
 
         try {
 
@@ -169,6 +165,16 @@ private final JdbcTemplate jdbcTemplate;
             e.printStackTrace();
         }
 
+    }
+    
+    public void complete(Long id) throws SQLException{
+        
+    	PlaneModel planModel = this.read(id);
+//        task.setSmoking(true);
+//        task.setDateOfCompletion(new Date(System.currentTimeMillis()));
+        
+        this.update(planModel);
+        
     }
 
 }

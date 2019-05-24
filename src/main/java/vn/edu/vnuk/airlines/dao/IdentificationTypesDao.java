@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 
-import vn.edu.vnuk.airlines.model.IdentificationTypes;
+import vn.edu.vnuk.airlines.model.IdentificationType;
 
 public class IdentificationTypesDao {
 
@@ -22,7 +22,7 @@ private final JdbcTemplate jdbcTemplate;
 
 
     //  CREATE
-    public void create(IdentificationTypes identificationTypes) throws SQLException{
+    public void create(IdentificationType identificationTypes) throws SQLException{
 
         String sqlQuery = "insert into identification_types (label) values (?)";
 
@@ -49,13 +49,13 @@ private final JdbcTemplate jdbcTemplate;
     
     
     //  READ (List of Body Parts)
-    public List<IdentificationTypes> read() throws SQLException {
+    public List<IdentificationType> read() throws SQLException {
 
         try {
             
         	return this.jdbcTemplate.query(
         			"SELECT * FROM identification_types",
-        			new BeanPropertyRowMapper<IdentificationTypes>(IdentificationTypes.class)
+        			new BeanPropertyRowMapper<IdentificationType>(IdentificationType.class)
     			);
 
         	
@@ -73,19 +73,19 @@ private final JdbcTemplate jdbcTemplate;
 
 
     //  READ (Single BodyPart)
-    public IdentificationTypes read(Long id) throws SQLException{
+    public IdentificationType read(Long id) throws SQLException{
     	
     	return this.jdbcTemplate.queryForObject(
     			"SELECT * FROM identification_types where id = ?",
         		new Object[] {id},
-        		new BeanPropertyRowMapper<IdentificationTypes>(IdentificationTypes.class)
+        		new BeanPropertyRowMapper<IdentificationType>(IdentificationType.class)
         	);
         
     }  
 
     
     //  UPDATE
-    public void update(IdentificationTypes bodyPart) throws SQLException {
+    public void update(IdentificationType bodyPart) throws SQLException {
     	
         String sqlQuery = "update identification_types set label=? where id=?";
         

@@ -2,7 +2,7 @@ package vn.edu.vnuk.airlines.model;
 
 import javax.validation.constraints.NotNull;
 
-public class Countries {
+public class Day {
 	
 	@NotNull
 	private Long id;

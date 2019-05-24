@@ -2,7 +2,7 @@ package vn.edu.vnuk.airlines.model;
 
 import javax.validation.constraints.NotNull;
 
-public class PaymentMethods {
+public class IdentificationType {
 	
 	@NotNull
 	private long id;
@@ -25,4 +25,5 @@ public class PaymentMethods {
 	public void setLabel(String label) {
 		this.label = label;
 	}
+
 }

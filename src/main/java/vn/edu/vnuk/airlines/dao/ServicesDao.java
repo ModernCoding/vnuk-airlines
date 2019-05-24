@@ -7,23 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import vn.edu.vnuk.airlines.model.Class;
+import vn.edu.vnuk.airlines.model.Country;
+import vn.edu.vnuk.airlines.model.Service;
 
-public class ClassesDao {
+public class ServicesDao {
 
 private final JdbcTemplate jdbcTemplate;
     
     @Autowired
-    public ClassesDao(JdbcTemplate jdbcTemplate) {
+    public ServicesDao(JdbcTemplate jdbcTemplate) {
 	  this.jdbcTemplate = jdbcTemplate;
     }
 	
 
 
     //  CREATE
-    public void create(Class classes) throws SQLException{
+    public void create(Service services) throws SQLException{
 
-        String sqlQuery = "insert into classes (label) values (?)";
+        String sqlQuery = "insert into services (label) values (?)";
 
         try {
             System.out.println(
@@ -32,7 +33,7 @@ private final JdbcTemplate jdbcTemplate;
             				
             				this.jdbcTemplate.update(
             						sqlQuery,
-            						new Object[] {classes.getLabel()}
+            						new Object[] {services.getLabel()}
         						)
         				)
         		);
@@ -48,13 +49,13 @@ private final JdbcTemplate jdbcTemplate;
     
     
     //  READ (List of Body Parts)
-    public List<Class> read() throws SQLException {
+    public List<Service> read() throws SQLException {
 
         try {
             
         	return this.jdbcTemplate.query(
-        			"SELECT * FROM classes",
-        			new BeanPropertyRowMapper<Class>(Class.class)
+        			"SELECT * FROM services",
+        			new BeanPropertyRowMapper<Service>(Service.class)
     			);
 
         	
@@ -72,21 +73,21 @@ private final JdbcTemplate jdbcTemplate;
 
 
     //  READ (Single BodyPart)
-    public Class read(Long id) throws SQLException{
+    public Service read(Long id) throws SQLException{
     	
     	return this.jdbcTemplate.queryForObject(
-    			"SELECT * FROM classes where id = ?",
+    			"SELECT * FROM services where id = ?",
         		new Object[] {id},
-        		new BeanPropertyRowMapper<Class>(Class.class)
+        		new BeanPropertyRowMapper<Service>(Service.class)
         	);
         
     }  
 
     
     //  UPDATE
-    public void update(Class bodyPart) throws SQLException {
+    public void update(Service bodyPart) throws SQLException {
     	
-        String sqlQuery = "update classes set label=? where id=?";
+        String sqlQuery = "update services set label=? where id=?";
         
         try {
         	this.jdbcTemplate.update(
@@ -99,7 +100,7 @@ private final JdbcTemplate jdbcTemplate;
 				);
             
             
-            System.out.println("Classes successfully modified.");
+            System.out.println("services successfully modified.");
         } 
 
         catch (Exception e) {
@@ -113,7 +114,7 @@ private final JdbcTemplate jdbcTemplate;
     //  DELETE
     public void delete(Long id) throws SQLException {
     	
-        String sqlQuery = "delete from classes where id=?";
+        String sqlQuery = "delete from services where id=?";
 
         try {
 

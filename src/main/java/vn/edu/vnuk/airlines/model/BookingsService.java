@@ -2,13 +2,13 @@ package vn.edu.vnuk.airlines.model;
 
 import javax.validation.constraints.NotNull;
 
-public class BookingsServices {
+public class BookingsService {
 	
 	@NotNull
 	private Long id;
 	
 	@NotNull
-	private int bookingId;
+	private Long bookingId;
 	
 	public Long getId() {
 		return id;
@@ -18,11 +18,11 @@ public class BookingsServices {
 		this.id = id;
 	}
 
-	public int getBookingId() {
+	public Long getBookingId() {
 		return bookingId;
 	}
 
-	public void setBookingId(int bookingId) {
+	public void setBookingId(Long bookingId) {
 		this.bookingId = bookingId;
 	}
 

@@ -2,20 +2,31 @@ package vn.edu.vnuk.airlines.model;
 
 import javax.validation.constraints.NotNull;
 
-public class Prices {
+public class City {
 	
 	@NotNull
-	private long id;
+	private Long id;
 	
+	@NotNull
+	private Long countryId;
+
 	@NotNull
 	private String label;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getCountryId() {
+		return countryId;
+	}
+
+	public void setCountryId(Long countryId) {
+		this.countryId = countryId;
 	}
 
 	public String getLabel() {
@@ -25,6 +36,5 @@ public class Prices {
 	public void setLabel(String label) {
 		this.label = label;
 	}
-
 
 }
