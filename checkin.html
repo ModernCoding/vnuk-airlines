@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>VNUK Airlines - Booking</title>
+  <title>VNUK Airlines - Check-in</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -33,7 +33,7 @@
             <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="#">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="support.html">Support</a>
@@ -50,68 +50,48 @@
 
       <div class="col-lg-3">
 
-        <h1 class="my-4">Booking</h1>
+        <h1 class="my-4">Check-in</h1>
         <div class="list-group">
-          <a href="book.html" class="list-group-item activeitem">BOOKING</a>
-          <a href="checkin.html" class="list-group-item">CHECK-IN</a>
+          <a href="book.html" class="list-group-item">BOOKING</a>
+          <a href="checkin.html" class="list-group-item activeitem">CHECK-IN</a>
           <a href="flights.html" class="list-group-item">FLIGHTS INFO</a>
         </div>
 
       </div>
       <!-- /.col-lg-3 -->
 
-      <div class="col-lg-9 bookgrid">
-        <div class="row row-select">
+      <div class="col-lg-9">
+
+        <div class="row row-input">
           <div class="col-lg-4">
-            <select class="form-control" id="FormControlSelect">
-              <option selected disabled>From</option>
-              <option value="hanoi">Ha Noi</option>
-              <option value="danang">Da Nang</option>
-              <option value="hochiminh">Ho Chi Minh</option>
-            </select>
+            <input type="text" class="form-control" id="usr" placeholder="Reservation Code">
           </div>
 
-          <div class="col-lg-4">
-            <select class="form-control" id="FormControlSelect">
-              <option selected disabled>To</option>
-              <option value="bangkok">Bangkok</option>
-              <option value="singapore">Singapore</option>
-              <option value="seoul">Seoul</option>
-            </select>
+          <div class="col-lg-5">
+            <input type="text" class="form-control" id="usr" placeholder="Family Name">
           </div>
 
           <div class="col">
             <select class="form-control" id="FormControlSelect">
-              <option selected disabled>Depart</option>
+              <option selected disabled>Departure City</option>
             </select>
           </div>
 
-          <div class="col">
-            <select class="form-control" id="FormControlSelect">
-              <option selected disabled>Return</option>
-            </select>
-          </div>
         </div>
 
         <div class="row row-radio">
-          <div class="col-sm-2"
+          <div class="col">
             <form>
-              <label class="radio-inline">
-                <input type="radio" name="trip" value="roundtrip"> Round Trip
-              <label>
-            </form>
-          </div>
-
-          <div class="col-sm-2"
-            <form>
-              <label class="radio-inline">
-                <input type="radio" name="trip" value="oneway"> One way
-              </label>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="pre-paid baggage"> Pre-paid Baggage
+                </label>
+              </div>
             </form>
           </div>
         </div>
 
-        <button type="button" class="btn default btnbook">FIND FLIGHT</button>
+        <button type="button" class="btn default btnbook">CHECK-IN</button>
       </div>
       <!-- /.col-lg-9 -->
 

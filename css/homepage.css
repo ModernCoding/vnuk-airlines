@@ -69,6 +69,10 @@ div {
   font-size: 20px;
 }
 
+.row-input {
+  padding-top: 120px;
+}
+
 .row-select {
   padding-top: 95px;
 }
