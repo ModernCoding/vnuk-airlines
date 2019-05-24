@@ -1,0 +1,116 @@
+/*!
+ * Start Bootstrap - Shop Homepage (https://startbootstrap.com/template-overviews/shop-homepage)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/LICENSE)
+ */
+body {
+  padding-top: 56px;
+}
+
+.logo {
+  max-width: 30%;
+  max-height: 30%
+}
+
+h1 {
+  padding-top: 20px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  color: #424242;
+}
+
+a {
+  color: #707070;
+}
+
+a:hover{
+  color: #282828;
+  text-decoration: none;
+}
+
+.activeitem {
+  background-color: #424242;
+  color: #efefef;
+}
+
+a.activeitem:hover {
+  color: #efefef;
+}
+
+.carousel .carousel-indicators {
+  visibility: hidden;
+}
+
+.carousel:hover .carousel-indicators {
+  visibility: visible;
+}
+
+.carousel .carousel-control-prev {
+  visibility: hidden;
+}
+
+.carousel:hover .carousel-control-prev {
+  visibility: visible;
+}
+
+.carousel .carousel-control-next {
+  visibility: hidden;
+}
+
+.carousel:hover .carousel-control-next {
+  visibility: visible;
+}
+
+div {
+  font-family: calibri;
+}
+
+.nav-item {
+  font-size: 20px;
+}
+
+.row-input {
+  padding-top: 120px;
+}
+
+.row-select {
+  padding-top: 95px;
+}
+
+.row-select-other {
+  padding-top: 50px;
+}
+
+.row-radio {
+  padding-top: 20px;
+}
+
+.btn {
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  padding: 9px 18px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.default {
+  border-color: #d3d3d3;
+  color: #424242;
+}
+
+.default:hover {
+  border-color: #424242;
+  background: #424242;
+  color: #efefef;
+}
+
+.btnbook {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  float: right;
+}
+
+.bookgrid {
+  padding-top: 25px;
+}
