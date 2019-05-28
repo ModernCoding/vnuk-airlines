@@ -10,7 +10,7 @@ public class Flight {
 	private Long id;
 	
 	@NotNull
-	private Long route_Id;
+	private Long routeId;
 	
 	@NotNull
 	private Long dayId;
@@ -23,6 +23,36 @@ public class Flight {
 	
 	@NotNull
 	private Date arrivalTime;
+	
+	private Route route;
+	
+	private Day day;
+	
+	private PlaneModel planeModel;
+
+	public Route getRoute() {
+		return route;
+	}
+
+	public void setRoute(Route route) {
+		this.route = route;
+	}
+
+	public Day getDay() {
+		return day;
+	}
+
+	public void setDay(Day day) {
+		this.day = day;
+	}
+
+	public PlaneModel getPlaneModel() {
+		return planeModel;
+	}
+
+	public void setPlaneModel(PlaneModel planeModel) {
+		this.planeModel = planeModel;
+	}
 
 	public Long getId() {
 		return id;
@@ -32,12 +62,12 @@ public class Flight {
 		this.id = id;
 	}
 
-	public Long getRoute_Id() {
-		return route_Id;
+	public Long getRouteId() {
+		return routeId;
 	}
 
-	public void setRoute_Id(Long route_Id) {
-		this.route_Id = route_Id;
+	public void setRouteId(Long routeId) {
+		this.routeId = routeId;
 	}
 
 	public Long getDayId() {

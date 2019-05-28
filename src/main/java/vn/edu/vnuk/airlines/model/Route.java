@@ -12,6 +12,16 @@ public class Route {
 	
 	@NotNull
 	private Long landingAirportId;
+	
+	private Airport airport;
+
+	public Airport getAirport() {
+		return airport;
+	}
+
+	public void setAirport(Airport airport) {
+		this.airport = airport;
+	}
 
 	public Long getId() {
 		return id;

@@ -9,12 +9,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import vn.edu.vnuk.airlines.model.PlaneManufacturer;
 
-public class PlaneManufacturersDao {
+public class PlaneManufacturerDao {
 
 	 private final JdbcTemplate jdbcTemplate;
 	    
 	    @Autowired
-	    public PlaneManufacturersDao(JdbcTemplate jdbcTemplate) {
+	    public PlaneManufacturerDao(JdbcTemplate jdbcTemplate) {
 		  this.jdbcTemplate = jdbcTemplate;
 	    }
 		

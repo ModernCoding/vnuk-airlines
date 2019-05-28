@@ -10,6 +10,9 @@ public class PriceType {
 	@NotNull
 	private String label;
 	
+	@NotNull
+	private String description;
+	
 	
 	public Long getId() {
 		return id;
@@ -25,6 +28,14 @@ public class PriceType {
 
 	public void setLabel(String label) {
 		this.label = label;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

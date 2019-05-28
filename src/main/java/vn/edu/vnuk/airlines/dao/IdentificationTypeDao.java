@@ -7,23 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import vn.edu.vnuk.airlines.model.PaymentMethod;
 
-public class PaymentMethodsDao {
+import vn.edu.vnuk.airlines.model.IdentificationType;
 
-	private final JdbcTemplate jdbcTemplate;
+public class IdentificationTypeDao {
+
+private final JdbcTemplate jdbcTemplate;
     
     @Autowired
-    public PaymentMethodsDao(JdbcTemplate jdbcTemplate) {
+    public IdentificationTypeDao(JdbcTemplate jdbcTemplate) {
 	  this.jdbcTemplate = jdbcTemplate;
     }
 	
 
 
     //  CREATE
-    public void create(PaymentMethod paymentMethods) throws SQLException{
+    public void create(IdentificationType identificationTypes) throws SQLException{
 
-        String sqlQuery = "insert into payment_methods (label) values (?)";
+        String sqlQuery = "insert into identification_types (label) values (?)";
 
         try {
             System.out.println(
@@ -32,7 +33,7 @@ public class PaymentMethodsDao {
             				
             				this.jdbcTemplate.update(
             						sqlQuery,
-            						new Object[] {paymentMethods.getLabel()}
+            						new Object[] {identificationTypes.getLabel()}
         						)
         				)
         		);
@@ -48,13 +49,13 @@ public class PaymentMethodsDao {
     
     
     //  READ (List of Body Parts)
-    public List<PaymentMethod> read() throws SQLException {
+    public List<IdentificationType> read() throws SQLException {
 
         try {
             
         	return this.jdbcTemplate.query(
-        			"SELECT * FROM payment_methods",
-        			new BeanPropertyRowMapper<PaymentMethod>(PaymentMethod.class)
+        			"SELECT * FROM identification_types",
+        			new BeanPropertyRowMapper<IdentificationType>(IdentificationType.class)
     			);
 
         	
@@ -72,21 +73,21 @@ public class PaymentMethodsDao {
 
 
     //  READ (Single BodyPart)
-    public PaymentMethod read(Long id) throws SQLException{
+    public IdentificationType read(Long id) throws SQLException{
     	
     	return this.jdbcTemplate.queryForObject(
-    			"SELECT * FROM payment_methods where id = ?",
+    			"SELECT * FROM identification_types where id = ?",
         		new Object[] {id},
-        		new BeanPropertyRowMapper<PaymentMethod>(PaymentMethod.class)
+        		new BeanPropertyRowMapper<IdentificationType>(IdentificationType.class)
         	);
         
     }  
 
     
     //  UPDATE
-    public void update(PaymentMethod bodyPart) throws SQLException {
+    public void update(IdentificationType bodyPart) throws SQLException {
     	
-        String sqlQuery = "update payment_methods set label=? where id=?";
+        String sqlQuery = "update identification_types set label=? where id=?";
         
         try {
         	this.jdbcTemplate.update(
@@ -99,7 +100,7 @@ public class PaymentMethodsDao {
 				);
             
             
-            System.out.println("PaymentMethods successfully modified.");
+            System.out.println("IdentificationTypes successfully modified.");
         } 
 
         catch (Exception e) {
@@ -113,7 +114,7 @@ public class PaymentMethodsDao {
     //  DELETE
     public void delete(Long id) throws SQLException {
     	
-        String sqlQuery = "delete from payment_methods where id=?";
+        String sqlQuery = "delete from identification_types where id=?";
 
         try {
 

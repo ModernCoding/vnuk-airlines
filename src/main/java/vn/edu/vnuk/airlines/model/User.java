@@ -15,6 +15,11 @@ public class User {
 	@NotNull
 	private String lastName;
 	
+	private String middleName;
+	
+	@NotNull
+	private String firstName;
+	
 	@NotNull
 	private Date dateOfBirth;
 	
@@ -32,6 +37,26 @@ public class User {
 
 	@NotNull
 	private int identificationNumber;
+	
+	private UserType userType;
+	
+	private IdentificationType identificationType;
+	
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
+	}
+
+	public IdentificationType getIdentificationType() {
+		return identificationType;
+	}
+
+	public void setIdentificationType(IdentificationType identificationType) {
+		this.identificationType = identificationType;
+	}
 
 	public Long getId() {
 		return id;
@@ -103,6 +128,22 @@ public class User {
 
 	public void setIdentificationNumber(int identificationNumber) {
 		this.identificationNumber = identificationNumber;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 }

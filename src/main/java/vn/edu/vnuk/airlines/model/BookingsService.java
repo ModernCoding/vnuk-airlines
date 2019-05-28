@@ -10,6 +10,29 @@ public class BookingsService {
 	@NotNull
 	private Long bookingId;
 	
+	@NotNull
+	private Long serviceId;
+	
+	private Booking booking;
+	
+	private Service service;
+	
+	public Booking getBooking() {
+		return booking;
+	}
+
+	public void setBooking(Booking booking) {
+		this.booking = booking;
+	}
+
+	public Service getService() {
+		return service;
+	}
+
+	public void setService(Service service) {
+		this.service = service;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -26,16 +49,14 @@ public class BookingsService {
 		this.bookingId = bookingId;
 	}
 
-	public int getServiceId() {
+	public Long getServiceId() {
 		return serviceId;
 	}
 
-	public void setServiceId(int serviceId) {
+	public void setServiceId(Long serviceId) {
 		this.serviceId = serviceId;
 	}
 
-	@NotNull
-	private int serviceId;
 	
 
 }

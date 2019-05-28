@@ -10,12 +10,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import vn.edu.vnuk.airlines.model.Country;
 import vn.edu.vnuk.airlines.model.UserType;
 
-public class UserTypesDao {
+public class UserTypeDao {
 
 private final JdbcTemplate jdbcTemplate;
     
     @Autowired
-    public UserTypesDao(JdbcTemplate jdbcTemplate) {
+    public UserTypeDao(JdbcTemplate jdbcTemplate) {
 	  this.jdbcTemplate = jdbcTemplate;
     }
 	

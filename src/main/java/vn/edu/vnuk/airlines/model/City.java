@@ -12,6 +12,16 @@ public class City {
 
 	@NotNull
 	private String label;
+	
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+
+	private Country country;
 
 	public Long getId() {
 		return id;

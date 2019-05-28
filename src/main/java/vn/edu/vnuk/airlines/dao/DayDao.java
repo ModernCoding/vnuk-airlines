@@ -9,12 +9,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import vn.edu.vnuk.airlines.model.Day;
 
-public class DaysDao {
+public class DayDao {
 
 private final JdbcTemplate jdbcTemplate;
     
     @Autowired
-    public DaysDao(JdbcTemplate jdbcTemplate) {
+    public DayDao(JdbcTemplate jdbcTemplate) {
 	  this.jdbcTemplate = jdbcTemplate;
     }
 	
