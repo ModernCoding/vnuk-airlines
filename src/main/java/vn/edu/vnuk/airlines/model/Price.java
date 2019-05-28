@@ -18,6 +18,36 @@ public class Price {
 
 	@NotNull
 	private Long value;
+	
+	private Flight flight;
+	
+	private Class classes;
+	
+	private PriceType priceType;
+
+	public Flight getFlight() {
+		return flight;
+	}
+
+	public void setFlight(Flight flight) {
+		this.flight = flight;
+	}
+
+	public Class getClasses() {
+		return classes;
+	}
+
+	public void setClasses(Class classes) {
+		this.classes = classes;
+	}
+
+	public PriceType getPriceType() {
+		return priceType;
+	}
+
+	public void setPriceType(PriceType priceType) {
+		this.priceType = priceType;
+	}
 
 	public Long getId() {
 		return id;

@@ -7,23 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import vn.edu.vnuk.airlines.model.PriceType;
+import vn.edu.vnuk.airlines.model.PaymentMethod;
 
-public class PriceTypesDao {
+public class PaymentMethodDao {
 
 	private final JdbcTemplate jdbcTemplate;
     
     @Autowired
-    public PriceTypesDao(JdbcTemplate jdbcTemplate) {
+    public PaymentMethodDao(JdbcTemplate jdbcTemplate) {
 	  this.jdbcTemplate = jdbcTemplate;
     }
 	
 
 
     //  CREATE
-    public void create(PriceType priceTypes) throws SQLException{
+    public void create(PaymentMethod paymentMethods) throws SQLException{
 
-        String sqlQuery = "insert into price_types (label, description) values (?, ?)";
+        String sqlQuery = "insert into payment_methods (label) values (?)";
 
         try {
             System.out.println(
@@ -32,7 +32,7 @@ public class PriceTypesDao {
             				
             				this.jdbcTemplate.update(
             						sqlQuery,
-            						new Object[] {priceTypes.getLabel()}
+            						new Object[] {paymentMethods.getLabel()}
         						)
         				)
         		);
@@ -48,13 +48,13 @@ public class PriceTypesDao {
     
     
     //  READ (List of Body Parts)
-    public List<PriceType> read() throws SQLException {
+    public List<PaymentMethod> read() throws SQLException {
 
         try {
             
         	return this.jdbcTemplate.query(
-        			"SELECT * FROM price_types",
-        			new BeanPropertyRowMapper<PriceType>(PriceType.class)
+        			"SELECT * FROM payment_methods",
+        			new BeanPropertyRowMapper<PaymentMethod>(PaymentMethod.class)
     			);
 
         	
@@ -72,21 +72,21 @@ public class PriceTypesDao {
 
 
     //  READ (Single BodyPart)
-    public PriceType read(Long id) throws SQLException{
+    public PaymentMethod read(Long id) throws SQLException{
     	
     	return this.jdbcTemplate.queryForObject(
-    			"SELECT * FROM price_types where id = ?",
+    			"SELECT * FROM payment_methods where id = ?",
         		new Object[] {id},
-        		new BeanPropertyRowMapper<PriceType>(PriceType.class)
+        		new BeanPropertyRowMapper<PaymentMethod>(PaymentMethod.class)
         	);
         
     }  
 
     
     //  UPDATE
-    public void update(PriceType bodyPart) throws SQLException {
+    public void update(PaymentMethod bodyPart) throws SQLException {
     	
-        String sqlQuery = "update countries set label=? where id=?";
+        String sqlQuery = "update payment_methods set label=? where id=?";
         
         try {
         	this.jdbcTemplate.update(
@@ -99,7 +99,7 @@ public class PriceTypesDao {
 				);
             
             
-            System.out.println("PriceTypes successfully modified.");
+            System.out.println("PaymentMethods successfully modified.");
         } 
 
         catch (Exception e) {
@@ -113,7 +113,7 @@ public class PriceTypesDao {
     //  DELETE
     public void delete(Long id) throws SQLException {
     	
-        String sqlQuery = "delete from price_types where id=?";
+        String sqlQuery = "delete from payment_methods where id=?";
 
         try {
 

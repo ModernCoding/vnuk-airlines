@@ -8,23 +8,22 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import vn.edu.vnuk.airlines.model.Country;
-import vn.edu.vnuk.airlines.model.Service;
 
-public class ServicesDao {
+public class CountryDao {
 
-private final JdbcTemplate jdbcTemplate;
+	private final JdbcTemplate jdbcTemplate;
     
     @Autowired
-    public ServicesDao(JdbcTemplate jdbcTemplate) {
+    public CountryDao(JdbcTemplate jdbcTemplate) {
 	  this.jdbcTemplate = jdbcTemplate;
     }
 	
 
 
     //  CREATE
-    public void create(Service services) throws SQLException{
+    public void create(Country countries) throws SQLException{
 
-        String sqlQuery = "insert into services (label) values (?)";
+        String sqlQuery = "insert into countries (label) values (?)";
 
         try {
             System.out.println(
@@ -33,7 +32,7 @@ private final JdbcTemplate jdbcTemplate;
             				
             				this.jdbcTemplate.update(
             						sqlQuery,
-            						new Object[] {services.getLabel()}
+            						new Object[] {countries.getLabel()}
         						)
         				)
         		);
@@ -49,13 +48,13 @@ private final JdbcTemplate jdbcTemplate;
     
     
     //  READ (List of Body Parts)
-    public List<Service> read() throws SQLException {
+    public List<Country> read() throws SQLException {
 
         try {
             
         	return this.jdbcTemplate.query(
-        			"SELECT * FROM services",
-        			new BeanPropertyRowMapper<Service>(Service.class)
+        			"SELECT * FROM countries",
+        			new BeanPropertyRowMapper<Country>(Country.class)
     			);
 
         	
@@ -73,21 +72,21 @@ private final JdbcTemplate jdbcTemplate;
 
 
     //  READ (Single BodyPart)
-    public Service read(Long id) throws SQLException{
+    public Country read(Long id) throws SQLException{
     	
     	return this.jdbcTemplate.queryForObject(
-    			"SELECT * FROM services where id = ?",
+    			"SELECT * FROM countries where id = ?",
         		new Object[] {id},
-        		new BeanPropertyRowMapper<Service>(Service.class)
+        		new BeanPropertyRowMapper<Country>(Country.class)
         	);
         
     }  
 
     
     //  UPDATE
-    public void update(Service bodyPart) throws SQLException {
+    public void update(Country bodyPart) throws SQLException {
     	
-        String sqlQuery = "update services set label=? where id=?";
+        String sqlQuery = "update countries set label=? where id=?";
         
         try {
         	this.jdbcTemplate.update(
@@ -100,7 +99,7 @@ private final JdbcTemplate jdbcTemplate;
 				);
             
             
-            System.out.println("services successfully modified.");
+            System.out.println("Countries successfully modified.");
         } 
 
         catch (Exception e) {
@@ -114,7 +113,7 @@ private final JdbcTemplate jdbcTemplate;
     //  DELETE
     public void delete(Long id) throws SQLException {
     	
-        String sqlQuery = "delete from services where id=?";
+        String sqlQuery = "delete from countries where id=?";
 
         try {
 

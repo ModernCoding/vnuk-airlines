@@ -21,6 +21,46 @@ public class Booking {
 	
 	@NotNull
 	private Long paymentMethodId;
+	
+	private User user;
+	
+	private Flight flight;
+	
+	private Price price;
+	
+	private PaymentMethod paymentMethod;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Flight getFlight() {
+		return flight;
+	}
+
+	public void setFlight(Flight flight) {
+		this.flight = flight;
+	}
+
+	public Price getPrice() {
+		return price;
+	}
+
+	public void setPrice(Price price) {
+		this.price = price;
+	}
+
+	public PaymentMethod getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(PaymentMethod paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
 
 	public Long getId() {
 		return id;

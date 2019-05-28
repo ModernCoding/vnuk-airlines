@@ -6,54 +6,55 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import vn.edu.vnuk.airlines.model.Country;
-import vn.edu.vnuk.airlines.model.PlaneManufacturer;
-import vn.edu.vnuk.airlines.model.PlaneModel;
+import org.springframework.jdbc.core.RowMapper;
 
-public class CityRowMapper {
+import vn.edu.vnuk.airlines.model.City;
+import vn.edu.vnuk.airlines.model.Country;
+
+
+public class CityRowMapper  implements RowMapper<City>{
 	
-	@Override
-	public Country mapRow(ResultSet rs, int rowNum) throws SQLException {
+	public City mapRow(ResultSet rs, int rowNum) throws SQLException {
 		
-		PlaneManufacturer planeManufacturer = new PlaneManufacturer();
-		Country planeModel = new Country();
+		Country country = new Country();
+		City city = new City();
 		
-		planeManufacturer.setId(rs.getLong("plane_manufacturer_id"));
-		planeManufacturer.setLabel(rs.getString("plane_manufacturer_label"));
+		country.setId(rs.getLong("country_id"));
+		country.setLabel(rs.getString("country_label"));
 		
-		planeModel.setId(rs.getLong("id"));
-		planeModel.setPlaneManufacturerId(planeManufacturer.getId());
-		planeModel.setLabel(rs.getString("label"));
-		planeModel.setPlaneManufacturer(planeManufacturer);
+		city.setId(rs.getLong("id"));
+		city.setCountryId(rs.getLong("country_id"));
+		city.setLabel(rs.getString("label"));
+		city.setCountry(country);
 		
-		return planeModel;
+		return city;
 	}
 	
 	
-	public List<PlaneModel> mapRows(List<Map<String, Object>> rows) throws SQLException {
+	public List<City> mapRows(List<Map<String, Object>> rows) throws SQLException {
 		
-		List<PlaneModel> planeModels = new ArrayList<PlaneModel>();
+		List<City> cities = new ArrayList<City>();
 		
 		
     	for (Map<String, Object> row : rows) {
 			
-    		PlaneManufacturer planeManufacturer = new PlaneManufacturer();
-			PlaneModel planeModel = new PlaneModel();
+    		Country country = new Country();
+			City city = new City();
 			
-			planeManufacturer.setId((Long) row.get("plane_manufacturer_id"));
-			planeManufacturer.setLabel((String) row.get("plane_manufacturer_label"));
+			country.setId((Long) row.get("country_id"));
+			country.setLabel((String) row.get("country_label"));
 			
-			planeModel.setId((Long) row.get("id"));
-			planeModel.setPlaneManufacturerId((Long) row.get("plane_manufacturer_id"));
-			planeModel.setLabel((String) row.get("label"));
-			planeModel.setPlaneManufacturer(planeManufacturer);
+			city.setId((Long) row.get("id"));
+			city.setCountryId((Long) row.get("country_id"));
+			city.setLabel((String) row.get("label"));
+			city.setCountry(country);
 			
-			planeModels.add(planeModel);
+			cities.add(city);
 			
 		}
 		
     	
-		return planeModels;
+		return cities;
 
 	}
 

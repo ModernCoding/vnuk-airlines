@@ -23,6 +23,16 @@ public class Airport {
     
     @NotNull
     private String code;
+    
+    private City city;
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
 
 	public Long getId() {
 		return id;

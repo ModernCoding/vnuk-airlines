@@ -7,24 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import vn.edu.vnuk.airlines.model.PriceType;
 
-import vn.edu.vnuk.airlines.model.IdentificationType;
+public class PriceTypeDao {
 
-public class IdentificationTypesDao {
-
-private final JdbcTemplate jdbcTemplate;
+	private final JdbcTemplate jdbcTemplate;
     
     @Autowired
-    public IdentificationTypesDao(JdbcTemplate jdbcTemplate) {
+    public PriceTypeDao(JdbcTemplate jdbcTemplate) {
 	  this.jdbcTemplate = jdbcTemplate;
     }
 	
 
 
     //  CREATE
-    public void create(IdentificationType identificationTypes) throws SQLException{
+    public void create(PriceType priceTypes) throws SQLException{
 
-        String sqlQuery = "insert into identification_types (label) values (?)";
+        String sqlQuery = "insert into price_types (label, description) values (?, ?)";
 
         try {
             System.out.println(
@@ -33,7 +32,7 @@ private final JdbcTemplate jdbcTemplate;
             				
             				this.jdbcTemplate.update(
             						sqlQuery,
-            						new Object[] {identificationTypes.getLabel()}
+            						new Object[] {priceTypes.getLabel()}
         						)
         				)
         		);
@@ -49,13 +48,13 @@ private final JdbcTemplate jdbcTemplate;
     
     
     //  READ (List of Body Parts)
-    public List<IdentificationType> read() throws SQLException {
+    public List<PriceType> read() throws SQLException {
 
         try {
             
         	return this.jdbcTemplate.query(
-        			"SELECT * FROM identification_types",
-        			new BeanPropertyRowMapper<IdentificationType>(IdentificationType.class)
+        			"SELECT * FROM price_types",
+        			new BeanPropertyRowMapper<PriceType>(PriceType.class)
     			);
 
         	
@@ -73,21 +72,21 @@ private final JdbcTemplate jdbcTemplate;
 
 
     //  READ (Single BodyPart)
-    public IdentificationType read(Long id) throws SQLException{
+    public PriceType read(Long id) throws SQLException{
     	
     	return this.jdbcTemplate.queryForObject(
-    			"SELECT * FROM identification_types where id = ?",
+    			"SELECT * FROM price_types where id = ?",
         		new Object[] {id},
-        		new BeanPropertyRowMapper<IdentificationType>(IdentificationType.class)
+        		new BeanPropertyRowMapper<PriceType>(PriceType.class)
         	);
         
     }  
 
     
     //  UPDATE
-    public void update(IdentificationType bodyPart) throws SQLException {
+    public void update(PriceType bodyPart) throws SQLException {
     	
-        String sqlQuery = "update identification_types set label=? where id=?";
+        String sqlQuery = "update countries set label=? where id=?";
         
         try {
         	this.jdbcTemplate.update(
@@ -100,7 +99,7 @@ private final JdbcTemplate jdbcTemplate;
 				);
             
             
-            System.out.println("IdentificationTypes successfully modified.");
+            System.out.println("PriceTypes successfully modified.");
         } 
 
         catch (Exception e) {
@@ -114,7 +113,7 @@ private final JdbcTemplate jdbcTemplate;
     //  DELETE
     public void delete(Long id) throws SQLException {
     	
-        String sqlQuery = "delete from identification_types where id=?";
+        String sqlQuery = "delete from price_types where id=?";
 
         try {
 
