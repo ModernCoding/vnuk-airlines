@@ -1,5 +1,6 @@
 package vn.edu.vnuk.airlines.dao;
 
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -181,5 +182,4 @@ private final JdbcTemplate jdbcTemplate;
         this.update(airport);
         
     }
-
 }

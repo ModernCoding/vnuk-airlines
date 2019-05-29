@@ -14,10 +14,11 @@ import vn.edu.vnuk.airlines.model.City;
 public class AirportRowMapper implements RowMapper<Airport>{
 	
 	public Airport mapRow(ResultSet rs, int rowNum) throws SQLException {
-		
+	
 		City city = new City();
 		Airport airport = new Airport();
 		
+
 		city.setId(rs.getLong("city_id"));
 		city.setCountryId(rs.getLong("city_country_id"));
 		city.setLabel(rs.getString("city_label"));
