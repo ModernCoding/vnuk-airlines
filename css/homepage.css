@@ -19,6 +19,14 @@ h1 {
   color: #424242;
 }
 
+h3 {
+  font-size: 40px;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  color: #424242;
+}
+
 a {
   color: #707070;
 }
