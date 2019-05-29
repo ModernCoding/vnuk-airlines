@@ -12,7 +12,7 @@ import vn.edu.vnuk.airlines.rowmapper.AirportRowMapper;
 
 public class AirportDao {
 
-private final JdbcTemplate jdbcTemplate;
+	private final JdbcTemplate jdbcTemplate;
     
     @Autowired
     public AirportDao(JdbcTemplate jdbcTemplate) {
@@ -182,4 +182,5 @@ private final JdbcTemplate jdbcTemplate;
         this.update(airport);
         
     }
+    
 }
