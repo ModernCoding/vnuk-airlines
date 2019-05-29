@@ -12,8 +12,8 @@ public class Sql5010InsertIntoIdentificationTypes {
 		
 		this.sqlQuery = "INSERT INTO identification_types (label) "
 				+ 	"values"
-				+ 	"('Passport'),"
-				+ 	"('National ID'),"
+				+ 	"('Passport')"
+				+ 	", ('National ID')"
 				+	";"
 				;
 	}

@@ -13,11 +13,11 @@ public class Sql5010InsertIntoServices {
 		
 		this.sqlQuery = "INSERT INTO services (label) "
 				+ 	"values"
-				+ 	"('Transfer to aiport'),"
-				+ 	"('Transfer from airport')"
-				+ 	"('Special food requirements')"
-				+ 	"('Choose seat')"
-				+ 	"('Priority check in')"
+				+ 	"('Transfer to aiport')"
+				+ 	", ('Transfer from airport')"
+				+ 	", ('Special food requirements')"
+				+ 	", ('Choose seat')"
+				+ 	", ('Priority check in')"
 				+	";";
 	}
 	

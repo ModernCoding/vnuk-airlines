@@ -13,8 +13,8 @@ public class Sql5010InsertIntoPaymentMethods {
 		
 		this.sqlQuery = "INSERT INTO payment_methods (label) "
 				+ 	"values"
-				+ 	"('Mastercard'),"
-				+ 	"('VISA'),"
+				+ 	"('Mastercard')"
+				+ 	", ('VISA')"
 				+	";"
 				;
 	}
