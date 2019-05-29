@@ -57,13 +57,13 @@ public class Sql0000RunAllQueries {
 		new Sql5010InsertIntoDays(connectionTable).run();
 		new Sql5010InsertIntoFlights(connectionTable).run();
 		new Sql5010InsertIntoUserTypes(connectionTable).run();
-		new Sql5010InsertIntoUsers(connectionTable).run();
 		new Sql5010InsertIntoIdentificationTypes(connectionTable).run();
+		new Sql5010InsertIntoUsers(connectionTable).run();
 		new Sql5010InsertIntoPaymentMethods(connectionTable).run();
-		new Sql5010InsertIntoBookings(connectionTable).run();
 		new Sql5010InsertIntoClasses(connectionTable).run();
 		new Sql5010InsertIntoPriceTypes(connectionTable).run();
 		new Sql5010InsertIntoPrices(connectionTable).run();
+		new Sql5010InsertIntoBookings(connectionTable).run();
 		new Sql5010InsertIntoServices(connectionTable).run();
 		new Sql5010InsertIntoBookingServices(connectionTable).run();
 		

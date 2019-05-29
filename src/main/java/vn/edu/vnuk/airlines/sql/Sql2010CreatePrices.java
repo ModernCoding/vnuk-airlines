@@ -15,7 +15,7 @@ public class Sql2010CreatePrices {
 				+ "flight_id BIGINT NOT NULL, "
 				+ "class_id BIGINT NOT NULL, "
 				+ "price_type_id BIGINT NOT NULL, "
-				+ "value VARCHAR(255) NOT NULL, "
+				+ "value INT NOT NULL, "
 				+ "PRIMARY KEY (id), "
 				+ "FOREIGN KEY (flight_id) REFERENCES flights (id), "
 				+ "FOREIGN KEY (class_id) REFERENCES classes (id), "

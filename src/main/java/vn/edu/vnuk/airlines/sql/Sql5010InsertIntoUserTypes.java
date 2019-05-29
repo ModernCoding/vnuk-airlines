@@ -14,7 +14,7 @@ public class Sql5010InsertIntoUserTypes {
 		this.sqlQuery = "INSERT INTO user_types (label) "
 				+ 	"values"
 				+ 	"('admin'),"
-				+ 	"('customer'),"
+				+ 	"('customer')"
 				+	";"
 				;
 	}

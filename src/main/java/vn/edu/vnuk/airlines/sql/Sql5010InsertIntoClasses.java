@@ -15,7 +15,7 @@ public class Sql5010InsertIntoClasses {
 				+ 	"values"
 				+ 	"('Economy'),"
 				+ 	"('Business'),"
-				+ 	"('First class'),"
+				+ 	"('First class')"
 				+	";"
 				;
 	}
