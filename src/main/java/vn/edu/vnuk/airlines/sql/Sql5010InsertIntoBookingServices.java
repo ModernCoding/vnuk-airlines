@@ -14,10 +14,10 @@ public class Sql5010InsertIntoBookingServices {
 		this.sqlQuery = "INSERT INTO booking_services (booking_id, service_id)"
 				+ 	"values"
 				+ 	"(1, 5)"
-//				+ 	", (5, 2)"
-//				+ 	", (4, 4)"
+				+ 	", (5, 2)"
+				+ 	", (4, 4)"
 				+ 	", (2, 1)"
-//				+ 	", (3, 4)"
+				+ 	", (3, 4)"
 				+ 	", (2, 3)"
 				+	";";
 	}
