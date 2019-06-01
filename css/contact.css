@@ -10,14 +10,6 @@ input[type=text], select, textarea {
 }
 
 /* Style the submit button with a specific background color etc */
-button{
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
 /* When moving the mouse over the submit button, add a darker green color */
 input[type=submit]:hover {
@@ -29,4 +21,13 @@ input[type=submit]:hover {
   border-radius: 5px;
   background-color: #FFFFFF;
   padding: 3px;
+}
+
+.contacthead {
+  margin-top: 30px;
+}
+
+label {
+  margin-left: 20px;
+  font-size: 20px;
 }

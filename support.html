@@ -64,31 +64,29 @@
 
         <div class="container contact">
           <form action="action_page.php">
-            <h5>Contact Form:</h5>
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+            <h1 class="contacthead">Contact Form:</h1>
+            <label for="info">Information:</label>
+            <input type="text" id="fname" name="firstname" placeholder="First Name..">
 
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+            <input type="text" id="lname" name="lastname" placeholder="Last Name..">
 
-            <label for="lname">Email</label>
-            <input type="text" id="lname" name="lastname" placeholder="Your email address..">
+            <input type="text" id="lname" name="lastname" placeholder="Email Address..">
 
-            <label for="country">Country</label>
             <select id="country" name="country">
-              <option value="australia">Vietnam</option>
-              <option value="canada">Hungary</option>
-              <option value="usa">Australia</option>
-              <option value="usa">Canada</option>
-              <option value="usa">France</option>
-              <option value="usa">USA</option>
+              <option selected disabled>Country</option>
+              <option value="vietnam">Vietnam</option>
+              <option value="usa">United States</option>
+              <option value="hungary">Hungary</option>
+              <option value="australia">Australia</option>
+              <option value="canada">Canada</option>
+              <option value="france">France</option>
             </select>
 
-            <label for="subject">Subject</label>
+            <label for="subject">Subject:</label>
             <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
           </form>
-            <a href='Contact.html'><button>Send</button></a>
+            <a href='Contact.html'><button class="btn default">Send</button></a>
         </div>
       </div>
       <!-- /.col-lg-3 -->
@@ -123,7 +121,7 @@
         </div>
 
             <div class="collapse-group1">
-              <h2>Baggage</h2>
+              <h2 style="text-align:center">Baggage</h2>
                         <div class="panel-group" id="accordion">
                           <button class="collapsible">General Information</button>
                             <div class="content">
@@ -214,7 +212,7 @@
             </div>
 
             <div class="collapse-group2">
-              <h2>Services</h2>
+              <h2 style="text-align:center">Services</h2>
 
               <div class="panel-group" id="accordion">
                 <button class="collapsible">Transit</button>
@@ -262,7 +260,7 @@
             </div>
 
             <div class="collapse-group2">
-              <h2>Travel documents</h2>
+              <h2 style="text-align:center">Travel documents</h2>
               <div class="panel-group" id="accordion">
                 <button class="collapsible">Visa</button>
                   <div class="content">
