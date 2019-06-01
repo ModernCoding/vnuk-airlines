@@ -15,13 +15,26 @@ body {
 h1 {
   padding-top: 20px;
   padding-bottom: 5px;
-  padding-left: 15px;
   color: #424242;
 }
 
 h3 {
   font-size: 40px;
   padding-top: 20px;
+  padding-bottom: 5px;
+  color: #424242;
+}
+
+h4 {
+  font-size: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  color: #424242;
+}
+
+h5 {
+  font-size: 40px;
+  padding-top: 5px;
   padding-bottom: 5px;
   color: #424242;
 }

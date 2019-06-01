@@ -16,6 +16,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/homepage.css" rel="stylesheet">
+    <link href="css/contact.css" rel="stylesheet">
 
 </head>
 
@@ -61,6 +62,34 @@
           <a href="flights.html" class="list-group-item">FLIGHTS INFO</a>
         </div>
 
+        <div class="container contact">
+          <form action="action_page.php">
+            <h5>Contact Form:</h5>
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+            <label for="lname">Email</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your email address..">
+
+            <label for="country">Country</label>
+            <select id="country" name="country">
+              <option value="australia">Vietnam</option>
+              <option value="canada">Hungary</option>
+              <option value="usa">Australia</option>
+              <option value="usa">Canada</option>
+              <option value="usa">France</option>
+              <option value="usa">USA</option>
+            </select>
+
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+          </form>
+            <a href='Contact.html'><button>Send</button></a>
+        </div>
       </div>
       <!-- /.col-lg-3 -->
 
