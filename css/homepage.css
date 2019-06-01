@@ -18,10 +18,9 @@ h1 {
   color: #424242;
 }
 
-h3 {
-  font-size: 40px;
-  padding-top: 20px;
-  padding-bottom: 5px;
+h2 {
+  padding-top: 15px;
+  padding-left: 15px;
   color: #424242;
 }
 
@@ -149,20 +148,24 @@ h4 {
 
 /* Style the button that is used to open and close the collapsible content */
 .collapsible {
-  background-color: #eee;
-  color: #444;
+  margin-top: 1px;
+  border-radius: 30px;
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  padding: 9px 18px;
+  font-size: 16px;
   cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
+  border-color: #d3d3d3;
+  color: #424242;
+  font-size: 20px;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .activecollapse, .collapsible:hover {
-  background-color: #ccc;
+  border-color: #d3d3d3;
+  background: #d3d3d3;
+  color: #3d3d3d;
 }
 
 /* Style the collapsible content. Note: hidden by default */
@@ -173,3 +176,7 @@ h4 {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
   }
+
+button:focus {
+  outline:0 !important;
+}
