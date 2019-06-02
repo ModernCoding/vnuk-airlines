@@ -61,7 +61,36 @@
       <!-- /.col-lg-3 -->
 
       <div class="col-lg-9">
-        <!-- Tables here -->
+        <table>
+        	<tr>
+        		<th>Id</th>
+        		<th>Route</th>
+        		<th>Day</th>
+        		<th>Plane Model</th>
+        		<th>Departure Time</th>
+        		<th>Arrival Time</th>
+        	</tr>
+        	<?php
+        	$conn = myspl_connect("localhost" , "root" , "" , "vnuk");
+			if ($conn-> connect_error) {
+				die("Connection fail:". $conn_> connect_error);
+			}
+			
+			$sql = "SELECT id, route_id, day_id, plane_model_id, departure_time, arrival_time from flights";
+			$result = $conn-> queru($sql);
+
+			if($result-> num_rows > 0) {
+				while($row = $result-> fetch_assoc()) {
+				echo "<tr><td>".$row["id"] ."</td><td>". $row["id"] ."</td><td>". $row["route_id"] ."</td><td>". $row[
+					"day_id"] ."</td><td>". $row["plane_model_id"] ."</td><td>". $row["departure_time"] ."</td><td>". $row["arrival_time"] ."</td><tr>";
+				}
+				echo "</table>";
+			}
+			else {
+				echo"0 result";
+			}
+        	?>
+        </table>
       </div>
       <!-- /.col-lg-9 -->
 
