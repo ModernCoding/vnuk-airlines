@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import vn.edu.vnuk.airlines.model.Country;
 import vn.edu.vnuk.airlines.model.UserType;
 
 public class UserTypeDao {
@@ -85,7 +84,7 @@ private final JdbcTemplate jdbcTemplate;
 
     
     //  UPDATE
-    public void update(Country bodyPart) throws SQLException {
+    public void update(UserType bodyPart) throws SQLException {
     	
         String sqlQuery = "update user_types set label=? where id=?";
         

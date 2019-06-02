@@ -51,8 +51,7 @@ public class RouteDao {
     
     
     //  READ (List of Customers)
-    @SuppressWarnings("rawtypes")
-	public List read(String airportId) throws SQLException {
+    public List<Route> read(String airportId) throws SQLException {
     	
     	String sqlQuery = "select t01.id"
 		    			+ "     , t01.take_off_airport_id"

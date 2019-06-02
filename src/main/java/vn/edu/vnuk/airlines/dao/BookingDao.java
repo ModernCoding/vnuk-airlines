@@ -55,8 +55,7 @@ public class BookingDao {
     
     
     //  READ (List of Customers)
-    @SuppressWarnings("rawtypes")
-	public List read(String userId) throws SQLException {
+    public List<Booking> read(String userId) throws SQLException {
     	
     	String sqlQuery = "select t01.id"
 		    			+ "     , t01.seat_number"

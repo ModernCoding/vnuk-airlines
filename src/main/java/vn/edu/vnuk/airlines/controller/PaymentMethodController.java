@@ -19,37 +19,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import vn.edu.vnuk.airlines.dao.PlaneManufacturerDao;
+import vn.edu.vnuk.airlines.dao.PaymentMethodDao;
+import vn.edu.vnuk.airlines.model.PaymentMethod;
 import vn.edu.vnuk.airlines.model.PlaneManufacturer;
 
 @Controller
-public class PlaneManufacturerController {
-	
-	private PlaneManufacturerDao dao;
+public class PaymentMethodController {
+
+	private PaymentMethodDao dao;
 	
 	@Autowired
-	public void setPlaneManufacturerDao(PlaneManufacturerDao dao) {
+	public void setPaymentMethodDao(PaymentMethodDao dao) {
 		this.dao = dao;
 	}
 	
 
-	@RequestMapping("/plane-manufacturers")
+	@RequestMapping("/payment-methods")
     public String index(Model model, ServletRequest request) throws SQLException{
-        model.addAttribute("planeManufacturers", dao.read());
-        model.addAttribute("template", "plane-manufacturer/index");
+        model.addAttribute("paymentMethod", dao.read());
+        model.addAttribute("template", "payment-method/index");
         return "_layout";
     }
     
     
-    @RequestMapping("/plane-manufacturers/{id}")
+    @RequestMapping("/payment-methods/{id}")
     public String show(@PathVariable("id") Long id, Model model, ServletRequest request) throws SQLException{
-        model.addAttribute("planeManufacturer", dao.read(id));
-        model.addAttribute("template", "plane-manufacturer/show");
+        model.addAttribute("paymentMethod", dao.read(id));
+        model.addAttribute("template", "payment-method/show");
         return "_layout";
     }
     
     
-    @RequestMapping("/plane-manufacturers/new")
+    @RequestMapping("/payment-methods/new")
     public String add(PlaneManufacturer planeManufacturer, Model model, @ModelAttribute("fieldErrors") ArrayList<FieldError> fieldErrors){
     	
     	for(FieldError fieldError : fieldErrors) {
@@ -59,17 +60,17 @@ public class PlaneManufacturerController {
     			);
     	}
     	
-        model.addAttribute("template", "plane-manufacturer/new");
+        model.addAttribute("template", "payment-method/new");
         return "_layout";
     }
     
     
-    @RequestMapping("/plane-manufacturers/{id}/edit")
+    @RequestMapping("/payment-methods/{id}/edit")
     public String edit(
     		
 		@RequestParam(value="backToShow", defaultValue="false") Boolean backToShow,
 		@PathVariable("id") Long id,
-		PlaneManufacturer planeManufacturer,
+		PaymentMethod paymentMethod,
 		Model model,
 		ServletRequest request,
 		@ModelAttribute("fieldErrors") ArrayList<FieldError> fieldErrors
@@ -87,8 +88,8 @@ public class PlaneManufacturerController {
     	
     	model.addAttribute("backToShow", backToShow);
     	model.addAttribute("urlCompletion", backToShow ? String.format("/%s", id) : "");
-    	model.addAttribute("planeManufacturer", dao.read(id));
-        model.addAttribute("template", "plane-manufacturer/edit");
+    	model.addAttribute("paymentMethod", dao.read(id));
+        model.addAttribute("template", "payment-method/edit");
 
         return "_layout";
     
@@ -96,10 +97,10 @@ public class PlaneManufacturerController {
     }
     
     
-    @RequestMapping(value="/plane-manufacturers", method=RequestMethod.POST)
+    @RequestMapping(value="/payment-methods", method=RequestMethod.POST)
     public String create(
 		
-    	@Valid PlaneManufacturer planeManufacturer,
+    	@Valid PaymentMethod paymentMethod,
     	BindingResult bindingResult,
     	ServletRequest request,
     	RedirectAttributes redirectAttributes
@@ -109,22 +110,22 @@ public class PlaneManufacturerController {
     	
         if (bindingResult.hasErrors()) {
         	redirectAttributes.addFlashAttribute("fieldErrors", bindingResult.getAllErrors());
-            return "redirect:/plane-manufacturers/new";
+            return "redirect:/payment-methods/new";
         }
         
-        dao.create(planeManufacturer);
-        return "redirect:/plane-manufacturers";
+        dao.create(paymentMethod);
+        return "redirect:/payment-methods";
         
         
     }
     
     
-    @RequestMapping(value="/plane-manufacturers/{id}", method=RequestMethod.PATCH)
+    @RequestMapping(value="/payment-methods/{id}", method=RequestMethod.PATCH)
     public String update(
     		
     		@RequestParam(value="backToShow", defaultValue="false") Boolean backToShow,
     		@PathVariable("id") Long id,
-    		@Valid PlaneManufacturer planeManufacturer,
+    		@Valid PaymentMethod paymentMethod,
     		BindingResult bindingResult,
     		ServletRequest request,
     		RedirectAttributes redirectAttributes
@@ -134,18 +135,18 @@ public class PlaneManufacturerController {
         
     	if (bindingResult.hasErrors()) {
         	redirectAttributes.addFlashAttribute("fieldErrors", bindingResult.getAllErrors());
-            return String.format("redirect:/plane-manufacturers/%s/edit", id);
+            return String.format("redirect:/payment-methods/%s/edit", id);
         }
         
-        dao.update(planeManufacturer);
-        return backToShow ? String.format("redirect:/plane-manufacturers/%s", id) : "redirect:/plane-manufacturers";
+        dao.update(paymentMethod);
+        return backToShow ? String.format("redirect:/payment-methods/%s", id) : "redirect:/payment-methods";
         
         
     }
     
     
     //  delete with ajax
-    @RequestMapping(value="/plane-manufacturers/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/payment-methods/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") Long id, ServletRequest request, HttpServletResponse response) throws SQLException {
     	dao.delete(id);
         response.setStatus(200);

@@ -54,8 +54,7 @@ public class FlightDao {
     
     
     //  READ (List of Customers)
-    @SuppressWarnings("rawtypes")
-	public List read(String routeId) throws SQLException {
+    public List<Flight> read(String routeId) throws SQLException {
     	
     	String sqlQuery = "select t01.id"
 		    			+ "     , t01.departure_time"

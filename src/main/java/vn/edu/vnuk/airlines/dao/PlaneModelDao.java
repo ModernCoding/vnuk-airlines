@@ -12,7 +12,7 @@ import vn.edu.vnuk.airlines.rowmapper.PlaneModelRowMapper;
 
 public class PlaneModelDao {
 
-private final JdbcTemplate jdbcTemplate;
+	private final JdbcTemplate jdbcTemplate;
     
     @Autowired
     public PlaneModelDao(JdbcTemplate jdbcTemplate) {

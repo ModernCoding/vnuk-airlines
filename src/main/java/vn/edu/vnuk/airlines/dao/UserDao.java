@@ -61,8 +61,7 @@ public class UserDao {
     
     
     //  READ (List of Customers)
-    @SuppressWarnings("rawtypes")
-	public List read(String userTypeId) throws SQLException {
+    public List<User> read(String userTypeId) throws SQLException {
     	
     	String sqlQuery = "select t01.id"
 		    			+ "     , t01.last_name"

@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -19,38 +18,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import vn.edu.vnuk.airlines.dao.PlaneManufacturerDao;
-import vn.edu.vnuk.airlines.model.PlaneManufacturer;
+import vn.edu.vnuk.airlines.dao.ClassesDao;
+import vn.edu.vnuk.airlines.model.Country;
 
-@Controller
-public class PlaneManufacturerController {
-	
-	private PlaneManufacturerDao dao;
+public class ClassController {
+
+	private ClassesDao dao;
 	
 	@Autowired
-	public void setPlaneManufacturerDao(PlaneManufacturerDao dao) {
+	public void setDayDao(ClassesDao dao) {
 		this.dao = dao;
 	}
 	
 
-	@RequestMapping("/plane-manufacturers")
+	@RequestMapping("/classes")
     public String index(Model model, ServletRequest request) throws SQLException{
-        model.addAttribute("planeManufacturers", dao.read());
-        model.addAttribute("template", "plane-manufacturer/index");
+        model.addAttribute("classes", dao.read());
+        model.addAttribute("template", "class/index");
         return "_layout";
     }
     
     
-    @RequestMapping("/plane-manufacturers/{id}")
+    @RequestMapping("/classes/{id}")
     public String show(@PathVariable("id") Long id, Model model, ServletRequest request) throws SQLException{
-        model.addAttribute("planeManufacturer", dao.read(id));
-        model.addAttribute("template", "plane-manufacturer/show");
+        model.addAttribute("class", dao.read(id));
+        model.addAttribute("template", "class/show");
         return "_layout";
     }
     
     
-    @RequestMapping("/plane-manufacturers/new")
-    public String add(PlaneManufacturer planeManufacturer, Model model, @ModelAttribute("fieldErrors") ArrayList<FieldError> fieldErrors){
+    @RequestMapping("/classes/new")
+    public String add(Country country, Model model, @ModelAttribute("fieldErrors") ArrayList<FieldError> fieldErrors){
     	
     	for(FieldError fieldError : fieldErrors) {
     		model.addAttribute(
@@ -59,17 +57,18 @@ public class PlaneManufacturerController {
     			);
     	}
     	
-        model.addAttribute("template", "plane-manufacturer/new");
+        model.addAttribute("template", "class/new");
         return "_layout";
     }
     
     
-    @RequestMapping("/plane-manufacturers/{id}/edit")
+    @SuppressWarnings("rawtypes")
+	@RequestMapping("/classes/{id}/edit")
     public String edit(
     		
 		@RequestParam(value="backToShow", defaultValue="false") Boolean backToShow,
 		@PathVariable("id") Long id,
-		PlaneManufacturer planeManufacturer,
+		Class classes,
 		Model model,
 		ServletRequest request,
 		@ModelAttribute("fieldErrors") ArrayList<FieldError> fieldErrors
@@ -87,8 +86,8 @@ public class PlaneManufacturerController {
     	
     	model.addAttribute("backToShow", backToShow);
     	model.addAttribute("urlCompletion", backToShow ? String.format("/%s", id) : "");
-    	model.addAttribute("planeManufacturer", dao.read(id));
-        model.addAttribute("template", "plane-manufacturer/edit");
+    	model.addAttribute("class", dao.read(id));
+        model.addAttribute("template", "day/edit");
 
         return "_layout";
     
@@ -96,10 +95,10 @@ public class PlaneManufacturerController {
     }
     
     
-    @RequestMapping(value="/plane-manufacturers", method=RequestMethod.POST)
+    @RequestMapping(value="/classes", method=RequestMethod.POST)
     public String create(
 		
-    	@Valid PlaneManufacturer planeManufacturer,
+    	@Valid vn.edu.vnuk.airlines.model.Class classes,
     	BindingResult bindingResult,
     	ServletRequest request,
     	RedirectAttributes redirectAttributes
@@ -109,22 +108,22 @@ public class PlaneManufacturerController {
     	
         if (bindingResult.hasErrors()) {
         	redirectAttributes.addFlashAttribute("fieldErrors", bindingResult.getAllErrors());
-            return "redirect:/plane-manufacturers/new";
+            return "redirect:/classes/new";
         }
         
-        dao.create(planeManufacturer);
-        return "redirect:/plane-manufacturers";
+        dao.create(classes);
+        return "redirect:/classes";
         
         
     }
     
     
-    @RequestMapping(value="/plane-manufacturers/{id}", method=RequestMethod.PATCH)
+    @RequestMapping(value="/classes/{id}", method=RequestMethod.PATCH)
     public String update(
     		
     		@RequestParam(value="backToShow", defaultValue="false") Boolean backToShow,
     		@PathVariable("id") Long id,
-    		@Valid PlaneManufacturer planeManufacturer,
+    		@Valid vn.edu.vnuk.airlines.model.Class classes,
     		BindingResult bindingResult,
     		ServletRequest request,
     		RedirectAttributes redirectAttributes
@@ -134,18 +133,18 @@ public class PlaneManufacturerController {
         
     	if (bindingResult.hasErrors()) {
         	redirectAttributes.addFlashAttribute("fieldErrors", bindingResult.getAllErrors());
-            return String.format("redirect:/plane-manufacturers/%s/edit", id);
+            return String.format("redirect:/classes/%s/edit", id);
         }
         
-        dao.update(planeManufacturer);
-        return backToShow ? String.format("redirect:/plane-manufacturers/%s", id) : "redirect:/plane-manufacturers";
+        dao.update(classes);
+        return backToShow ? String.format("redirect:/classes/%s", id) : "redirect:/classes";
         
         
     }
     
     
     //  delete with ajax
-    @RequestMapping(value="/plane-manufacturers/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/classes/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") Long id, ServletRequest request, HttpServletResponse response) throws SQLException {
     	dao.delete(id);
         response.setStatus(200);

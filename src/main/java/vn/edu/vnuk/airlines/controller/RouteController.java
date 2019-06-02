@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,38 +20,58 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import vn.edu.vnuk.airlines.dao.PlaneManufacturerDao;
-import vn.edu.vnuk.airlines.model.PlaneManufacturer;
+import vn.edu.vnuk.airlines.dao.AirportDao;
+import vn.edu.vnuk.airlines.dao.RouteDao;
+import vn.edu.vnuk.airlines.model.Airport;
+import vn.edu.vnuk.airlines.model.Price;
+import vn.edu.vnuk.airlines.model.Route;
 
 @Controller
-public class PlaneManufacturerController {
-	
-	private PlaneManufacturerDao dao;
+public class RouteController {
+
+	@Autowired
+	private AirportDao airportDao;	
 	
 	@Autowired
-	public void setPlaneManufacturerDao(PlaneManufacturerDao dao) {
-		this.dao = dao;
-	}
-	
+	private RouteDao routeDao;
 
-	@RequestMapping("/plane-manufacturers")
-    public String index(Model model, ServletRequest request) throws SQLException{
-        model.addAttribute("planeManufacturers", dao.read());
-        model.addAttribute("template", "plane-manufacturer/index");
+	@RequestMapping("/routes")
+    public String index(
+		
+		@RequestParam(value="takeOffAirportId", required = false) String takeOffAirportId,
+		@RequestParam(value="landingAirportId", required = false) String landingAirportId,
+		Model model,
+		ServletRequest request
+
+	) throws SQLException{
+		
+		Route route = new Route();
+		if (takeOffAirportId != null)
+			route.setTakeOffAirportId(Long.valueOf(takeOffAirportId));
+		
+		if (landingAirportId != null)
+			route.setLandingAirportId(Long.valueOf(landingAirportId));
+		
+		model.addAttribute("routes", routeDao.read(route));
+        model.addAttribute("template", "order/index");
         return "_layout";
-    }
+	}
     
-    
-    @RequestMapping("/plane-manufacturers/{id}")
+    @RequestMapping("/routes/{id}")
     public String show(@PathVariable("id") Long id, Model model, ServletRequest request) throws SQLException{
-        model.addAttribute("planeManufacturer", dao.read(id));
-        model.addAttribute("template", "plane-manufacturer/show");
+        model.addAttribute("route", routeDao.read(id));
+        model.addAttribute("template", "route/show");
         return "_layout";
     }
     
-    
-    @RequestMapping("/plane-manufacturers/new")
-    public String add(PlaneManufacturer planeManufacturer, Model model, @ModelAttribute("fieldErrors") ArrayList<FieldError> fieldErrors){
+    @RequestMapping("/routes/new")
+    public String add(
+    		
+    	Route route,
+		Model model,
+		@ModelAttribute("fieldErrors") ArrayList<FieldError> fieldErrors
+	
+	) throws SQLException{
     	
     	for(FieldError fieldError : fieldErrors) {
     		model.addAttribute(
@@ -59,24 +80,23 @@ public class PlaneManufacturerController {
     			);
     	}
     	
-        model.addAttribute("template", "plane-manufacturer/new");
+    	model.addAttribute("template", "route/new");
+    	model.addAttribute("airports", airportDao.read(new Airport()));
         return "_layout";
     }
     
-    
-    @RequestMapping("/plane-manufacturers/{id}/edit")
+    @RequestMapping("/routes/{id}/edit")
     public String edit(
     		
 		@RequestParam(value="backToShow", defaultValue="false") Boolean backToShow,
 		@PathVariable("id") Long id,
-		PlaneManufacturer planeManufacturer,
+		Route route,
 		Model model,
 		ServletRequest request,
 		@ModelAttribute("fieldErrors") ArrayList<FieldError> fieldErrors
 		
 	) throws SQLException{
     	
-    	
     	for(FieldError fieldError : fieldErrors) {
     		model.addAttribute(
     				String.format("%sFieldError", fieldError.getField()),
@@ -84,70 +104,57 @@ public class PlaneManufacturerController {
     			);
     	}
     	
-    	
     	model.addAttribute("backToShow", backToShow);
     	model.addAttribute("urlCompletion", backToShow ? String.format("/%s", id) : "");
-    	model.addAttribute("planeManufacturer", dao.read(id));
-        model.addAttribute("template", "plane-manufacturer/edit");
+    	model.addAttribute("routes", routeDao.read(id));
+    	model.addAttribute("airports", airportDao.read());
+        model.addAttribute("template", "route/edit");
 
         return "_layout";
-    
-        
     }
     
-    
-    @RequestMapping(value="/plane-manufacturers", method=RequestMethod.POST)
-    public String create(
-		
-    	@Valid PlaneManufacturer planeManufacturer,
+    @RequestMapping(value="/routes", method=RequestMethod.POST)
+    public String create(		
+    	@Valid Route route,
     	BindingResult bindingResult,
     	ServletRequest request,
-    	RedirectAttributes redirectAttributes
-    
+    	RedirectAttributes redirectAttributes    
     ) throws SQLException{
-        
     	
         if (bindingResult.hasErrors()) {
         	redirectAttributes.addFlashAttribute("fieldErrors", bindingResult.getAllErrors());
-            return "redirect:/plane-manufacturers/new";
+            return "redirect:/routes/new";
         }
         
-        dao.create(planeManufacturer);
-        return "redirect:/plane-manufacturers";
-        
-        
+        routeDao.create(route);
+        return "redirect:/orders";
     }
     
-    
-    @RequestMapping(value="/plane-manufacturers/{id}", method=RequestMethod.PATCH)
+    @RequestMapping(value="/routes/{id}", method=RequestMethod.PATCH)
     public String update(
     		
     		@RequestParam(value="backToShow", defaultValue="false") Boolean backToShow,
     		@PathVariable("id") Long id,
-    		@Valid PlaneManufacturer planeManufacturer,
+    		@Valid Route route,
     		BindingResult bindingResult,
     		ServletRequest request,
     		RedirectAttributes redirectAttributes
     		
     	) throws SQLException{
-    	
         
     	if (bindingResult.hasErrors()) {
         	redirectAttributes.addFlashAttribute("fieldErrors", bindingResult.getAllErrors());
-            return String.format("redirect:/plane-manufacturers/%s/edit", id);
+            return String.format("redirect:/routes/%s/edit", id);
         }
         
-        dao.update(planeManufacturer);
-        return backToShow ? String.format("redirect:/plane-manufacturers/%s", id) : "redirect:/plane-manufacturers";
-        
-        
+    	routeDao.update(route);
+        return backToShow ? String.format("redirect:/routes/%s", id) : "redirect:/routes";
     }
     
-    
     //  delete with ajax
-    @RequestMapping(value="/plane-manufacturers/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/routes/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") Long id, ServletRequest request, HttpServletResponse response) throws SQLException {
-    	dao.delete(id);
+    	routeDao.delete(id);
         response.setStatus(200);
     }
     

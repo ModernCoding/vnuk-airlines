@@ -19,37 +19,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import vn.edu.vnuk.airlines.dao.PlaneManufacturerDao;
+import vn.edu.vnuk.airlines.dao.UserTypeDao;
 import vn.edu.vnuk.airlines.model.PlaneManufacturer;
+import vn.edu.vnuk.airlines.model.UserType;
 
 @Controller
-public class PlaneManufacturerController {
-	
-	private PlaneManufacturerDao dao;
+public class UserTypeController {
+
+	private UserTypeDao dao;
 	
 	@Autowired
-	public void setPlaneManufacturerDao(PlaneManufacturerDao dao) {
+	public void setUserTypeDao(UserTypeDao dao) {
 		this.dao = dao;
 	}
 	
 
-	@RequestMapping("/plane-manufacturers")
+	@RequestMapping("/user-types")
     public String index(Model model, ServletRequest request) throws SQLException{
-        model.addAttribute("planeManufacturers", dao.read());
-        model.addAttribute("template", "plane-manufacturer/index");
+        model.addAttribute("userType", dao.read());
+        model.addAttribute("template", "user-type/index");
         return "_layout";
     }
     
     
-    @RequestMapping("/plane-manufacturers/{id}")
+    @RequestMapping("/user-types/{id}")
     public String show(@PathVariable("id") Long id, Model model, ServletRequest request) throws SQLException{
-        model.addAttribute("planeManufacturer", dao.read(id));
-        model.addAttribute("template", "plane-manufacturer/show");
+        model.addAttribute("userType", dao.read(id));
+        model.addAttribute("template", "user-type/show");
         return "_layout";
     }
     
     
-    @RequestMapping("/plane-manufacturers/new")
+    @RequestMapping("/user-types/new")
     public String add(PlaneManufacturer planeManufacturer, Model model, @ModelAttribute("fieldErrors") ArrayList<FieldError> fieldErrors){
     	
     	for(FieldError fieldError : fieldErrors) {
@@ -59,17 +60,17 @@ public class PlaneManufacturerController {
     			);
     	}
     	
-        model.addAttribute("template", "plane-manufacturer/new");
+        model.addAttribute("template", "user-type/new");
         return "_layout";
     }
     
     
-    @RequestMapping("/plane-manufacturers/{id}/edit")
+    @RequestMapping("/user-types/{id}/edit")
     public String edit(
     		
 		@RequestParam(value="backToShow", defaultValue="false") Boolean backToShow,
 		@PathVariable("id") Long id,
-		PlaneManufacturer planeManufacturer,
+		UserType userType,
 		Model model,
 		ServletRequest request,
 		@ModelAttribute("fieldErrors") ArrayList<FieldError> fieldErrors
@@ -87,8 +88,8 @@ public class PlaneManufacturerController {
     	
     	model.addAttribute("backToShow", backToShow);
     	model.addAttribute("urlCompletion", backToShow ? String.format("/%s", id) : "");
-    	model.addAttribute("planeManufacturer", dao.read(id));
-        model.addAttribute("template", "plane-manufacturer/edit");
+    	model.addAttribute("userType", dao.read(id));
+        model.addAttribute("template", "user-type/edit");
 
         return "_layout";
     
@@ -96,35 +97,35 @@ public class PlaneManufacturerController {
     }
     
     
-    @RequestMapping(value="/plane-manufacturers", method=RequestMethod.POST)
+    @RequestMapping(value="/user-types", method=RequestMethod.POST)
     public String create(
 		
-    	@Valid PlaneManufacturer planeManufacturer,
+    	@Valid UserType userType,
     	BindingResult bindingResult,
     	ServletRequest request,
     	RedirectAttributes redirectAttributes
     
     ) throws SQLException{
-        
     	
         if (bindingResult.hasErrors()) {
+        	
         	redirectAttributes.addFlashAttribute("fieldErrors", bindingResult.getAllErrors());
-            return "redirect:/plane-manufacturers/new";
+            return "redirect:/user-types/new";
         }
         
-        dao.create(planeManufacturer);
-        return "redirect:/plane-manufacturers";
+        dao.create(userType);
+        return "redirect:/user-types";
         
         
     }
     
     
-    @RequestMapping(value="/plane-manufacturers/{id}", method=RequestMethod.PATCH)
+    @RequestMapping(value="/user-types/{id}", method=RequestMethod.PATCH)
     public String update(
     		
     		@RequestParam(value="backToShow", defaultValue="false") Boolean backToShow,
     		@PathVariable("id") Long id,
-    		@Valid PlaneManufacturer planeManufacturer,
+    		@Valid UserType userType,
     		BindingResult bindingResult,
     		ServletRequest request,
     		RedirectAttributes redirectAttributes
@@ -134,18 +135,18 @@ public class PlaneManufacturerController {
         
     	if (bindingResult.hasErrors()) {
         	redirectAttributes.addFlashAttribute("fieldErrors", bindingResult.getAllErrors());
-            return String.format("redirect:/plane-manufacturers/%s/edit", id);
+            return String.format("redirect:/user-types/%s/edit", id);
         }
         
-        dao.update(planeManufacturer);
-        return backToShow ? String.format("redirect:/plane-manufacturers/%s", id) : "redirect:/plane-manufacturers";
+        dao.update(userType);
+        return backToShow ? String.format("redirect:/user-types/%s", id) : "redirect:/user-types";
         
         
     }
     
     
     //  delete with ajax
-    @RequestMapping(value="/plane-manufacturers/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/user-types/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") Long id, ServletRequest request, HttpServletResponse response) throws SQLException {
     	dao.delete(id);
         response.setStatus(200);

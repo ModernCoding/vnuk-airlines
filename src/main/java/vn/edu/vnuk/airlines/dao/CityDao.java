@@ -52,8 +52,7 @@ public class CityDao {
     
     
     //  READ (List of Customers)
-    @SuppressWarnings("rawtypes")
-	public List read(String countryId) throws SQLException {
+    public List<City> read(String countryId) throws SQLException {
     	
     	String sqlQuery = "select t01.id"
 		    			+ "     , t01.label"

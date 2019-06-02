@@ -54,8 +54,7 @@ public class PriceDao {
     
     
     //  READ (List of Customers)
-    @SuppressWarnings("rawtypes")
-	public List read(String flightId) throws SQLException {
+    public List<Price> read(String flightId) throws SQLException {
     	
     	String sqlQuery = "select t01.id"
     			+ "     , t01.value"
